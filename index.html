@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>የአብነት ትምህርት ቤት የምዝገባ ፎርም</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; color: #333; }
+    .form-container { max-width: 600px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    h2 { text-align: center; color: #1e3a8a; margin-bottom: 20px; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; font-weight: bold; margin-bottom: 5px; }
+    input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 15px; }
+    .bank-info { background: #eff6ff; border-left: 4px solid #2563eb; padding: 12px; margin: 15px 0; border-radius: 4px; }
+    button { width: 100%; background: #1e3a8a; color: white; padding: 12px; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; }
+    button:hover { background: #1d4ed8; }
+    #message { margin-top: 15px; text-align: center; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>የአብነት ትምህርት ቤት የምዝገባ ፎርም</h2>
+  <form id="registrationForm">
+    
+    <div class="form-group">
+      <label>ሙሉ ስም *</label>
+      <input type="text" id="full_name" minlength="3" required placeholder="ምሳሌ፦ አበበ ከበደ">
+    </div>
+
+    <div class="form-group">
+      <label>ስልክ ቁጥር *</label>
+      <input type="tel" id="phone" required placeholder="0911223344">
+    </div>
+
+    <div class="form-group">
+      <label>ጾታ *</label>
+      <select id="gender" required>
+        <option value="">ይምረጡ</option>
+        <option value="ወንድ">ወንድ</option>
+        <option value="ሴት">ሴት</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>ከተማ/አድራሻ *</label>
+      <input type="text" id="city" required placeholder="አዲስ አበባ">
+    </div>
+
+    <div class="form-group">
+      <label>የቴሌግራም መለያ (Telegram Username) *</label>
+      <input type="text" id="telegram_username" required placeholder="@username">
+    </div>
+
+    <div class="form-group">
+      <label>የሚፈልጉት የትምህርት ዓይነት *</label>
+      <select id="course_type" required>
+        <option value="">ይምረጡ</option>
+        <option value="ንባብ">ንባብ</option>
+        <option value="ቃል">ቃል</option>
+        <option value="ዜማ">ዜማ</option>
+        <option value="ቅዳሴ">ቅዳሴ</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>በሳምንት የሚማሩበት ቀን *</label>
+      <select id="days_per_week" required onchange="updateAmount()">
+        <option value="">ይምረጡ</option>
+        <option value="2 ቀን">በሳምንት 2 ቀን (1,200 ETB)</option>
+        <option value="3 ቀን">በሳምንት 3 ቀን (1,500 ETB)</option>
+      </select>
+    </div>
+
+    <div class="bank-info">
+      <strong>የክፍያ መረጃ (Bank of Abyssinia)፦</strong><br>
+      የአካውንት ቁጥር፦ <strong>115765288</strong><br>
+      የሚከፍሉት መጠን፦ <span id="amountDisplay" style="color: #dc2626; font-weight: bold;">0</span> ETB
+    </div>
+
+    <div class="form-group">
+      <label>የባንክ ትራንዛክሽን ቁጥር (Transaction ID) *</label>
+      <input type="text" id="transaction_id" required placeholder="ምሳሌ፦ FT24...">
+    </div>
+
+    <div class="form-group">
+      <label>የደረሰኝ ስክሪንሹት ሊንክ / Receipt URL *</label>
+      <input type="url" id="receipt_url" required placeholder="https://...">
+    </div>
+
+    <button type="submit">ምዝገባውን ላክ</button>
+  </form>
+
+  <div id="message"></div>
+</div>
+
+<script>
+  // 1. የ Supabase ማገናኛ ቁልፎች (እነዚህን በራስህ ተካ)
+  const SUPABASE_URL = "https://mnsqffaojwnxvuyqmzwu.supabase.co/rest/v1/";
+  const SUPABASE_ANON_KEY = "sb_publishable_IKJ_-x0hH7bhn5vizv4yuw_X1v2EhxZ";
+
+  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  function updateAmount() {
+    const days = document.getElementById("days_per_week").value;
+    const amountDisplay = document.getElementById("amountDisplay");
+    if (days === "2 ቀን") amountDisplay.innerText = "1,200";
+    else if (days === "3 ቀን") amountDisplay.innerText = "1,500";
+    else amountDisplay.innerText = "0";
+  }
+
+  document.getElementById("registrationForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const msg = document.getElementById("message");
+    msg.style.color = "blue";
+    msg.innerText = "እየላከ ነው... እባክዎን ይቆዩ";
+
+    const days = document.getElementById("days_per_week").value;
+    const amount = days === "2 ቀን" ? 1200 : 1500;
+
+    const studentData = {
+      full_name: document.getElementById("full_name").value,
+      phone: document.getElementById("phone").value,
+      gender: document.getElementById("gender").value,
+      city: document.getElementById("city").value,
+      telegram_username: document.getElementById("telegram_username").value,
+      course_type: document.getElementById("course_type").value,
+      days_per_week: days,
+      amount: amount,
+      transaction_id: document.getElementById("transaction_id").value,
+      receipt_url: document.getElementById("receipt_url").value
+    };
+
+    const { data, error } = await supabase.from('registrations').insert([studentData]);
+
+    if (error) {
+      msg.style.color = "red";
+      msg.innerText = "ስህተት፦ " + error.message;
+    } else {
+      msg.style.color = "green";
+      msg.innerText = "ምዝገባዎ በስኬት ተጠናቋል! እናመሰግናለን።";
+      document.getElementById("registrationForm").reset();
+      document.getElementById("amountDisplay").innerText = "0";
+    }
+  });
+</script>
+
+</body>
+</html>
+
