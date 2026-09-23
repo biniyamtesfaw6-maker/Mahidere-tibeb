@@ -327,12 +327,12 @@
             if (receiptFile) {
                 const fileName = `${Date.now()}_${receiptFile.name}`;
                 const { data: uploadData, error: uploadError } = await supabaseClient.storage
-                    .from('student-photos')
+                    .from('receipts')
                     .upload(fileName, receiptFile);
 
                 if (!uploadError) {
                     const { data: publicUrlData } = supabaseClient.storage
-                        .from('student-photos')
+                        .from('receipts')
                         .getPublicUrl(fileName);
                     receiptUrl = publicUrlData.publicUrl;
                 }
