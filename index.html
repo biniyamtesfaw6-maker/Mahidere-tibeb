@@ -1,107 +1,170 @@
 <!DOCTYPE html>
-<html lang="am">
+<html lang="am" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ አቢነት ትምህርት ቤት - ምዝገባ</title>
+    <title>የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ አቢነት ትምህርት ቤት - የምዝገባ ፖርታል</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Supabase JS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts - Noto Serif Ethiopic & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
+            font-family: 'Plus Jakarta Sans', 'Noto Serif Ethiopic', serif;
+        }
+        .eth-font {
             font-family: 'Noto Serif Ethiopic', serif;
+        }
+        /* Custom Glassmorphism & Glow Effects */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 158, 11, 0.05);
+        }
+        .glow-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+            transform: translateY(-1px);
+        }
+        input:focus, select:focus {
+            box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.3);
         }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center p-4">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4 relative overflow-x-hidden">
 
-    <div class="max-w-xl w-full bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden p-6 sm:p-8">
+    <!-- Background Ambient Glow Effects -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-xl w-full glass-card rounded-3xl overflow-hidden p-6 sm:p-10 relative z-10">
         
         <!-- Header -->
         <div class="text-center mb-8">
-            <h1 class="text-2xl sm:text-3xl font-bold text-amber-400 mb-2">የአቢነት ትምህርት ቤት ምዝገባ</h1>
-            <p class="text-sm text-slate-400">እባክዎ የምዝገባ ቅጹን ደረጃ በደረጃ በትክክል ይሙሉ</p>
+            <div class="inline-flex p-3.5 bg-gradient-to-br from-amber-500/20 to-amber-600/5 border border-amber-500/30 rounded-2xl mb-4 text-amber-400 shadow-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+            </div>
+            <h1 class="eth-font text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-orange-400 mb-2">የአቢነት ትምህርት ቤት ምዝገባ</h1>
+            <p class="text-xs sm:text-sm text-slate-400">እባክዎ የምዝገባ ቅጹን በደረጃ በትክክል ይሙሉ</p>
             
-            <!-- Step Progress Indicators -->
-            <div class="flex justify-center items-center gap-2 mt-6">
-                <div id="dot-1" class="h-2.5 w-10 rounded-full bg-amber-500 transition-all duration-300"></div>
-                <div id="dot-2" class="h-2.5 w-10 rounded-full bg-slate-600 transition-all duration-300"></div>
-                <div id="dot-3" class="h-2.5 w-10 rounded-full bg-slate-600 transition-all duration-300"></div>
+            <!-- Modern Step Progress Indicator -->
+            <div class="flex justify-center items-center gap-3 mt-6">
+                <div class="flex items-center gap-2">
+                    <div id="dot-1" class="h-2 w-12 rounded-full bg-amber-500 transition-all duration-500 shadow-sm shadow-amber-500/50"></div>
+                    <span id="label-1" class="text-xs text-amber-400 font-bold">1</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div id="dot-2" class="h-2 w-12 rounded-full bg-slate-800 transition-all duration-500"></div>
+                    <span id="label-2" class="text-xs text-slate-500 font-medium">2</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div id="dot-3" class="h-2 w-12 rounded-full bg-slate-800 transition-all duration-500"></div>
+                    <span id="label-3" class="text-xs text-slate-500 font-medium">3</span>
+                </div>
             </div>
         </div>
 
-        <!-- Form Wizard -->
+        <!-- Multi-step Form -->
         <form id="registrationForm">
             
             <!-- Step 1: Personal Info -->
-            <div id="step-1" class="space-y-4">
-                <h2 class="text-lg font-semibold text-amber-300 border-b border-slate-700 pb-2">1. የግል መረጃዎች</h2>
+            <div id="step-1" class="space-y-5 transition-all duration-300">
+                <h2 class="eth-font text-sm sm:text-base font-semibold text-amber-300/90 border-b border-slate-800/80 pb-2.5 flex items-center gap-2.5">
+                    <span class="bg-gradient-to-br from-amber-400 to-amber-600 text-slate-950 w-6 h-6 rounded-lg inline-flex items-center justify-center text-xs font-bold shadow">1</span> 
+                    ግል መረጃ
+                </h2>
                 
                 <div>
-                    <label class="block text-sm font-medium text-slate-300 mb-1">ሙሉ ስም (ከአባት ስም ጋር)</label>
-                    <input type="text" id="fullName" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors" placeholder="ምሳሌ፡ ወንድወሰን አየለ">
+                    <label class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">ሙሉ ስም (ከአባት ስም ጋር)</label>
+                    <input type="text" id="fullName" required class="w-full bg-slate-900/80 border border-slate-700/70 rounded-2xl px-4.5 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-all text-sm" placeholder="ምሳሌ፡ ወንድወሰን አየለ">
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-slate-300 mb-1">እድሜ</label>
-                    <input type="number" id="age" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors" placeholder="እድሜዎን ያስገቡ">
+                    <label class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">እድሜ</label>
+                    <input type="number" id="age" required class="w-full bg-slate-900/80 border border-slate-700/70 rounded-2xl px-4.5 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-all text-sm" placeholder="እድሜዎን ያስገቡ">
                 </div>
 
                 <div class="flex justify-end pt-4">
-                    <button type="button" onclick="nextStep(2)" class="bg-amber-600 hover:bg-amber-500 text-white font-medium px-6 py-2.5 rounded-lg transition-colors shadow-lg">
-                        ቀጥል ➔
+                    <button type="button" onclick="nextStep(2)" class="glow-button bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold px-7 py-3.5 rounded-2xl transition-all text-sm flex items-center gap-2 shadow-lg shadow-amber-600/20">
+                        ቀጥል
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                        </svg>
                     </button>
                 </div>
             </div>
 
             <!-- Step 2: Contact & Address -->
-            <div id="step-2" class="space-y-4 hidden">
-                <h2 class="text-lg font-semibold text-amber-300 border-b border-slate-700 pb-2">2. አድራሻ እና ስልክ ቁጥር</h2>
+            <div id="step-2" class="space-y-5 hidden transition-all duration-300">
+                <h2 class="eth-font text-sm sm:text-base font-semibold text-amber-300/90 border-b border-slate-800/80 pb-2.5 flex items-center gap-2.5">
+                    <span class="bg-gradient-to-br from-amber-400 to-amber-600 text-slate-950 w-6 h-6 rounded-lg inline-flex items-center justify-center text-xs font-bold shadow">2</span> 
+                    አድራሻ
+                </h2>
                 
                 <div>
-                    <label class="block text-sm font-medium text-slate-300 mb-1">ስልክ ቁጥር</label>
-                    <input type="tel" id="phone" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors" placeholder="09xxxxxxxx">
+                    <label class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">ስልክ ቁጥር</label>
+                    <input type="tel" id="phone" required class="w-full bg-slate-900/80 border border-slate-700/70 rounded-2xl px-4.5 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-all text-sm" placeholder="09xxxxxxxx">
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-slate-300 mb-1">የመኖሪያ አድራሻ (ከተማ / ክፍለ ከተማ)</label>
-                    <input type="text" id="address" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors" placeholder="ምሳሌ፡ አዲስ አበባ፣ ቦሌ">
+                    <label class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">የመኖሪያ አድራሻ (ከተማ / ክፍለ ከተማ)</label>
+                    <input type="text" id="address" required class="w-full bg-slate-900/80 border border-slate-700/70 rounded-2xl px-4.5 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-all text-sm" placeholder="ምሳሌ፡ አዲስ አበባ፣ ቦሌ">
                 </div>
 
                 <div class="flex justify-between pt-4">
-                    <button type="button" onclick="prevStep(1)" class="bg-slate-700 hover:bg-slate-600 text-slate-200 font-medium px-6 py-2.5 rounded-lg transition-colors">
-                        ⬅ ተመለስ
+                    <button type="button" onclick="prevStep(1)" class="bg-slate-800/80 hover:bg-slate-700 text-slate-300 font-medium px-6 py-3.5 rounded-2xl transition-all text-sm border border-slate-700/60">
+                        ተመለስ
                     </button>
-                    <button type="button" onclick="nextStep(3)" class="bg-amber-600 hover:bg-amber-500 text-white font-medium px-6 py-2.5 rounded-lg transition-colors shadow-lg">
-                        ቀጥል ➔
+                    <button type="button" onclick="nextStep(3)" class="glow-button bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold px-7 py-3.5 rounded-2xl transition-all text-sm flex items-center gap-2 shadow-lg shadow-amber-600/20">
+                        ቀጥል
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                        </svg>
                     </button>
                 </div>
             </div>
 
-            <!-- Step 3: Education Level & Submit -->
-            <div id="step-3" class="space-y-4 hidden">
-                <h2 class="text-lg font-semibold text-amber-300 border-b border-slate-700 pb-2">3. የሚማሩበት የትምህርት መደብ</h2>
+            <!-- Step 3: Education Level, Photo Upload & Submit -->
+            <div id="step-3" class="space-y-5 hidden transition-all duration-300">
+                <h2 class="eth-font text-sm sm:text-base font-semibold text-amber-300/90 border-b border-slate-800/80 pb-2.5 flex items-center gap-2.5">
+                    <span class="bg-gradient-to-br from-amber-400 to-amber-600 text-slate-950 w-6 h-6 rounded-lg inline-flex items-center justify-center text-xs font-bold shadow">3</span> 
+                    የትምህርት መደብ እና ፎቶ
+                </h2>
                 
                 <div>
-                    <label class="block text-sm font-medium text-slate-300 mb-1">የአቢነት ክፍል ይምረጡ</label>
-                    <select id="department" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors">
-                        <option value="">ክፍል ይምረጡ</option>
-                        <option value="ቁርአን/ዝማሜ (እዚህ ጋር የገዳም/አቢነት ትምህርት አይነቶች)">አጓጉል (ዜማ)</option>
-                        <option value="ቅኔ">ቅኔ ማጥናት</option>
-                        <option value="መጽሐፍ ቅዱስ ትርጓሜ">መጽሐፍ ቅዱስ ትርጓሜ</option>
+                    <label class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">መማር የሚፈልጉትን ትምህርት ይምረጡ</label>
+                    <select id="department" required class="w-full bg-slate-900/80 border border-slate-700/70 rounded-2xl px-4.5 py-3.5 text-white focus:outline-none focus:border-amber-500 transition-all text-sm cursor-pointer">
+                        <option value="" class="bg-slate-900 text-slate-400">ትምህርት ይምረጡ</option>
+                        <option value="ንባብ (ወንጌል ዮሐንስ; መዝሙረ ዳዊት..)" class="bg-slate-900">ንባብ (ወንጌል ዮሐንስ; መዝሙረ ዳዊት..)</option>
+                        <option value="ቃል (ውዳሴ ማርያም; ማኅሌተ ማርያም..)" class="bg-slate-900">ቃል (ውዳሴ ማርያም; ማኅሌተ ማርያም..)</option>
+                        <option value="ዜማ (ውዳሴ ማርያም; አስተንትኖ..)" class="bg-slate-900">ዜማ (ውዳሴ ማርያም; አስተንትኖ..)</option>
+                        <option value="ቅኔ (ተአምራ; ግብረ ዳዊት..)" class="bg-slate-900">ቅኔ (ተአምራ; ግብረ ዳዊት..)</option>
                     </select>
                 </div>
 
-                <div id="messageBox" class="hidden p-3 rounded-lg text-sm text-center"></div>
+                <div>
+                    <label class="block text-xs sm:text-sm font-medium text-slate-300 mb-2">የመታወቂያ ወይም የፊት ፎቶ ያስገቡ</label>
+                    <input type="file" id="studentPhoto" accept="image/*" class="w-full bg-slate-900/80 border border-slate-700/70 rounded-2xl px-4 py-3 text-slate-300 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-amber-500 file:text-slate-950 hover:file:bg-amber-400 transition-all cursor-pointer">
+                </div>
+
+                <div id="messageBox" class="hidden p-3.5 rounded-2xl text-xs sm:text-sm text-center font-medium shadow-inner"></div>
 
                 <div class="flex justify-between pt-4">
-                    <button type="button" onclick="prevStep(2)" class="bg-slate-700 hover:bg-slate-600 text-slate-200 font-medium px-6 py-2.5 rounded-lg transition-colors">
-                        ⬅ ተመለስ
+                    <button type="button" onclick="prevStep(2)" class="bg-slate-800/80 hover:bg-slate-700 text-slate-300 font-medium px-6 py-3.5 rounded-2xl transition-all text-sm border border-slate-700/60">
+                        ተመለስ
                     </button>
-                    <button type="submit" id="submitBtn" class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-8 py-2.5 rounded-lg transition-colors shadow-lg">
-                        ምዝገባውን አጠናቅ ፃፍ ✓
+                    <button type="submit" id="submitBtn" class="glow-button bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-bold px-8 py-3.5 rounded-2xl transition-all text-sm shadow-lg shadow-emerald-600/20">
+                        ምዝገባውን አጠናቅ
                     </button>
                 </div>
             </div>
@@ -111,41 +174,35 @@
 
     <!-- Script to handle Wizard and Supabase -->
     <script>
-        // Supabase Configuration (እዚህ ጋር የራስህን Supabase URL እና Key አስገባ)
+        // Supabase Configuration
         const SUPABASE_URL = 'https://mnsqffaojwnxvuyqmzwu.supabase.co/rest/v1/';
-        const SUPABASE_ANON_KEY = 'sb_publishable_IKJ_-x0hH7bhn5vizv4yuw_X1v2EhxZ';
+        const SUPABASE_ANON_KEY = 'Sb_publishable_IKJ_-x0hH7bhn5vizv4yuw_X1v2EhxZ';
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         function nextStep(step) {
-            // Validate step 1 fields if moving to 2
             if(step === 2) {
-                const name = document.getElementById('fullName').value;
-                const age = document.getElementById('age').value;
+                const name = document.getElementById('fullName').value.trim();
+                const age = document.getElementById('age').value.trim();
                 if(!name || !age) {
                     alert('እባክዎ ሙሉ ስምዎን እና እድሜዎን ያስገቡ።');
                     return;
                 }
             }
-            // Validate step 2 fields if moving to 3
             if(step === 3) {
-                const phone = document.getElementById('phone').value;
-                const address = document.getElementById('address').value;
+                const phone = document.getElementById('phone').value.trim();
+                const address = document.getElementById('address').value.trim();
                 if(!phone || !address) {
                     alert('እባክዎ ስልክ ቁጥርዎን እና አድራሻዎን ያስገቡ።');
                     return;
                 }
             }
 
-            // Hide all steps
             document.getElementById('step-1').classList.add('hidden');
             document.getElementById('step-2').classList.add('hidden');
             document.getElementById('step-3').classList.add('hidden');
 
-            // Show target step
             document.getElementById(`step-${step}`).classList.remove('hidden');
-
-            // Update indicators
-            updateDots(step);
+            updateIndicators(step);
         }
 
         function prevStep(step) {
@@ -154,23 +211,27 @@
             document.getElementById('step-3').classList.add('hidden');
 
             document.getElementById(`step-${step}`).classList.remove('hidden');
-            updateDots(step);
+            updateIndicators(step);
         }
 
-        function updateDots(step) {
+        function updateIndicators(step) {
             for(let i=1; i<=3; i++) {
                 const dot = document.getElementById(`dot-${i}`);
-                if(i === step) {
-                    dot.classList.remove('bg-slate-600');
-                    dot.classList.add('bg-amber-500');
+                const label = document.getElementById(`label-${i}`);
+                if(i <= step) {
+                    dot.classList.remove('bg-slate-800', 'w-12');
+                    dot.classList.add('bg-amber-500', 'w-12', 'shadow-sm', 'shadow-amber-500/50');
+                    label.classList.remove('text-slate-500', 'font-medium');
+                    label.classList.add('text-amber-400', 'font-bold');
                 } else {
-                    dot.classList.remove('bg-amber-500');
-                    dot.classList.add('bg-slate-600');
+                    dot.classList.remove('bg-amber-500', 'shadow-sm', 'shadow-amber-500/50');
+                    dot.classList.add('bg-slate-800', 'w-12');
+                    label.classList.remove('text-amber-400', 'font-bold');
+                    label.classList.add('text-slate-500', 'font-medium');
                 }
             }
         }
 
-        // Form Submission to Supabase
         const form = document.getElementById('registrationForm');
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -178,14 +239,32 @@
             const messageBox = document.getElementById('messageBox');
 
             submitBtn.disabled = true;
-            submitBtn.textContent = ' በመላክ ላይ...';
+            submitBtn.textContent = 'በመላክ ላይ...';
+
+            let photoUrl = '';
+            const photoFile = document.getElementById('studentPhoto').files[0];
+
+            if (photoFile) {
+                const fileName = `${Date.now()}_${photoFile.name}`;
+                const { data: uploadData, error: uploadError } = await supabaseClient.storage
+                    .from('student-photos')
+                    .upload(fileName, photoFile);
+
+                if (!uploadError) {
+                    const { data: publicUrlData } = supabaseClient.storage
+                        .from('student-photos')
+                        .getPublicUrl(fileName);
+                    photoUrl = publicUrlData.publicUrl;
+                }
+            }
 
             const formData = {
                 full_name: document.getElementById('fullName').value,
                 age: parseInt(document.getElementById('age').value),
                 phone: document.getElementById('phone').value,
                 address: document.getElementById('address').value,
-                department: document.getElementById('department').value
+                department: document.getElementById('department').value,
+                photo_url: photoUrl
             };
 
             const { data, error } = await supabaseClient
@@ -194,12 +273,12 @@
 
             messageBox.classList.remove('hidden');
             if (error) {
-                messageBox.className = 'p-3 rounded-lg text-sm text-center bg-red-900/50 text-red-200 border border-red-700';
+                messageBox.className = 'p-3.5 rounded-2xl text-xs sm:text-sm text-center bg-red-950/80 text-red-200 border border-red-800/80';
                 messageBox.textContent = 'ምዝገባው አልተሳካም: ' + error.message;
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'ምዝገባውን አጠናቅ ፃፍ ✓';
+                submitBtn.textContent = 'ምዝገባውን አጠናቅ';
             } else {
-                messageBox.className = 'p-3 rounded-lg text-sm text-center bg-emerald-900/50 text-emerald-200 border border-emerald-700';
+                messageBox.className = 'p-3.5 rounded-2xl text-xs sm:text-sm text-center bg-emerald-950/80 text-emerald-200 border border-emerald-800/80';
                 messageBox.textContent = 'ምዝገባዎ በအောင်ነት ተመዝግቧል! እናመሰግናለን።';
                 form.reset();
                 setTimeout(() => {
@@ -211,4 +290,3 @@
     </script>
 </body>
 </html>
-
