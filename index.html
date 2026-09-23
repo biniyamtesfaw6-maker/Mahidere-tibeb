@@ -1,151 +1,214 @@
 <!DOCTYPE html>
 <html lang="am">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>የአብነት ትምህርት ቤት የምዝገባ ፎርም</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; color: #333; }
-    .form-container { max-width: 600px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    h2 { text-align: center; color: #1e3a8a; margin-bottom: 20px; }
-    .form-group { margin-bottom: 15px; }
-    label { display: block; font-weight: bold; margin-bottom: 5px; }
-    input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 15px; }
-    .bank-info { background: #eff6ff; border-left: 4px solid #2563eb; padding: 12px; margin: 15px 0; border-radius: 4px; }
-    button { width: 100%; background: #1e3a8a; color: white; padding: 12px; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; }
-    button:hover { background: #1d4ed8; }
-    #message { margin-top: 15px; text-align: center; font-weight: bold; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ አቢነት ትምህርት ቤት - ምዝገባ</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Supabase JS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Serif Ethiopic', serif;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center p-4">
 
-<div class="form-container">
-  <h2>የአብነት ትምህርት ቤት የምዝገባ ፎርም</h2>
-  <form id="registrationForm">
-    
-    <div class="form-group">
-      <label>ሙሉ ስም *</label>
-      <input type="text" id="full_name" minlength="3" required placeholder="ምሳሌ፦ አበበ ከበደ">
+    <div class="max-w-xl w-full bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden p-6 sm:p-8">
+        
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-2xl sm:text-3xl font-bold text-amber-400 mb-2">የአቢነት ትምህርት ቤት ምዝገባ</h1>
+            <p class="text-sm text-slate-400">እባክዎ የምዝገባ ቅጹን ደረጃ በደረጃ በትክክል ይሙሉ</p>
+            
+            <!-- Step Progress Indicators -->
+            <div class="flex justify-center items-center gap-2 mt-6">
+                <div id="dot-1" class="h-2.5 w-10 rounded-full bg-amber-500 transition-all duration-300"></div>
+                <div id="dot-2" class="h-2.5 w-10 rounded-full bg-slate-600 transition-all duration-300"></div>
+                <div id="dot-3" class="h-2.5 w-10 rounded-full bg-slate-600 transition-all duration-300"></div>
+            </div>
+        </div>
+
+        <!-- Form Wizard -->
+        <form id="registrationForm">
+            
+            <!-- Step 1: Personal Info -->
+            <div id="step-1" class="space-y-4">
+                <h2 class="text-lg font-semibold text-amber-300 border-b border-slate-700 pb-2">1. የግል መረጃዎች</h2>
+                
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1">ሙሉ ስም (ከአባት ስም ጋር)</label>
+                    <input type="text" id="fullName" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors" placeholder="ምሳሌ፡ ወንድወሰን አየለ">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1">እድሜ</label>
+                    <input type="number" id="age" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors" placeholder="እድሜዎን ያስገቡ">
+                </div>
+
+                <div class="flex justify-end pt-4">
+                    <button type="button" onclick="nextStep(2)" class="bg-amber-600 hover:bg-amber-500 text-white font-medium px-6 py-2.5 rounded-lg transition-colors shadow-lg">
+                        ቀጥል ➔
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Contact & Address -->
+            <div id="step-2" class="space-y-4 hidden">
+                <h2 class="text-lg font-semibold text-amber-300 border-b border-slate-700 pb-2">2. አድራሻ እና ስልክ ቁጥር</h2>
+                
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1">ስልክ ቁጥር</label>
+                    <input type="tel" id="phone" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors" placeholder="09xxxxxxxx">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1">የመኖሪያ አድራሻ (ከተማ / ክፍለ ከተማ)</label>
+                    <input type="text" id="address" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors" placeholder="ምሳሌ፡ አዲስ አበባ፣ ቦሌ">
+                </div>
+
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="prevStep(1)" class="bg-slate-700 hover:bg-slate-600 text-slate-200 font-medium px-6 py-2.5 rounded-lg transition-colors">
+                        ⬅ ተመለስ
+                    </button>
+                    <button type="button" onclick="nextStep(3)" class="bg-amber-600 hover:bg-amber-500 text-white font-medium px-6 py-2.5 rounded-lg transition-colors shadow-lg">
+                        ቀጥል ➔
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Education Level & Submit -->
+            <div id="step-3" class="space-y-4 hidden">
+                <h2 class="text-lg font-semibold text-amber-300 border-b border-slate-700 pb-2">3. የሚማሩበት የትምህርት መደብ</h2>
+                
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1">የአቢነት ክፍል ይምረጡ</label>
+                    <select id="department" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                        <option value="">ክፍል ይምረጡ</option>
+                        <option value="ቁርአን/ዝማሜ (እዚህ ጋር የገዳም/አቢነት ትምህርት አይነቶች)">አጓጉል (ዜማ)</option>
+                        <option value="ቅኔ">ቅኔ ማጥናት</option>
+                        <option value="መጽሐፍ ቅዱስ ትርጓሜ">መጽሐፍ ቅዱስ ትርጓሜ</option>
+                    </select>
+                </div>
+
+                <div id="messageBox" class="hidden p-3 rounded-lg text-sm text-center"></div>
+
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="prevStep(2)" class="bg-slate-700 hover:bg-slate-600 text-slate-200 font-medium px-6 py-2.5 rounded-lg transition-colors">
+                        ⬅ ተመለስ
+                    </button>
+                    <button type="submit" id="submitBtn" class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-8 py-2.5 rounded-lg transition-colors shadow-lg">
+                        ምዝገባውን አጠናቅ ፃፍ ✓
+                    </button>
+                </div>
+            </div>
+
+        </form>
     </div>
 
-    <div class="form-group">
-      <label>ስልክ ቁጥር *</label>
-      <input type="tel" id="phone" required placeholder="0911223344">
-    </div>
+    <!-- Script to handle Wizard and Supabase -->
+    <script>
+        // Supabase Configuration (እዚህ ጋር የራስህን Supabase URL እና Key አስገባ)
+        const SUPABASE_URL = 'https://mnsqffaojwnxvuyqmzwu.supabase.co/rest/v1/';
+        const SUPABASE_ANON_KEY = 'sb_publishable_IKJ_-x0hH7bhn5vizv4yuw_X1v2EhxZ';
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    <div class="form-group">
-      <label>ጾታ *</label>
-      <select id="gender" required>
-        <option value="">ይምረጡ</option>
-        <option value="ወንድ">ወንድ</option>
-        <option value="ሴት">ሴት</option>
-      </select>
-    </div>
+        function nextStep(step) {
+            // Validate step 1 fields if moving to 2
+            if(step === 2) {
+                const name = document.getElementById('fullName').value;
+                const age = document.getElementById('age').value;
+                if(!name || !age) {
+                    alert('እባክዎ ሙሉ ስምዎን እና እድሜዎን ያስገቡ።');
+                    return;
+                }
+            }
+            // Validate step 2 fields if moving to 3
+            if(step === 3) {
+                const phone = document.getElementById('phone').value;
+                const address = document.getElementById('address').value;
+                if(!phone || !address) {
+                    alert('እባክዎ ስልክ ቁጥርዎን እና አድራሻዎን ያስገቡ።');
+                    return;
+                }
+            }
 
-    <div class="form-group">
-      <label>ከተማ/አድራሻ *</label>
-      <input type="text" id="city" required placeholder="አዲስ አበባ">
-    </div>
+            // Hide all steps
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.add('hidden');
 
-    <div class="form-group">
-      <label>የቴሌግራም መለያ (Telegram Username) *</label>
-      <input type="text" id="telegram_username" required placeholder="@username">
-    </div>
+            // Show target step
+            document.getElementById(`step-${step}`).classList.remove('hidden');
 
-    <div class="form-group">
-      <label>የሚፈልጉት የትምህርት ዓይነት *</label>
-      <select id="course_type" required>
-        <option value="">ይምረጡ</option>
-        <option value="ንባብ">ንባብ</option>
-        <option value="ቃል">ቃል</option>
-        <option value="ዜማ">ዜማ</option>
-        <option value="ቅዳሴ">ቅዳሴ</option>
-      </select>
-    </div>
+            // Update indicators
+            updateDots(step);
+        }
 
-    <div class="form-group">
-      <label>በሳምንት የሚማሩበት ቀን *</label>
-      <select id="days_per_week" required onchange="updateAmount()">
-        <option value="">ይምረጡ</option>
-        <option value="2 ቀን">በሳምንት 2 ቀን (1,200 ETB)</option>
-        <option value="3 ቀን">በሳምንት 3 ቀን (1,500 ETB)</option>
-      </select>
-    </div>
+        function prevStep(step) {
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.add('hidden');
 
-    <div class="bank-info">
-      <strong>የክፍያ መረጃ (Bank of Abyssinia)፦</strong><br>
-      የአካውንት ቁጥር፦ <strong>115765288</strong><br>
-      የሚከፍሉት መጠን፦ <span id="amountDisplay" style="color: #dc2626; font-weight: bold;">0</span> ETB
-    </div>
+            document.getElementById(`step-${step}`).classList.remove('hidden');
+            updateDots(step);
+        }
 
-    <div class="form-group">
-      <label>የባንክ ትራንዛክሽን ቁጥር (Transaction ID) *</label>
-      <input type="text" id="transaction_id" required placeholder="ምሳሌ፦ FT24...">
-    </div>
+        function updateDots(step) {
+            for(let i=1; i<=3; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                if(i === step) {
+                    dot.classList.remove('bg-slate-600');
+                    dot.classList.add('bg-amber-500');
+                } else {
+                    dot.classList.remove('bg-amber-500');
+                    dot.classList.add('bg-slate-600');
+                }
+            }
+        }
 
-    <div class="form-group">
-      <label>የደረሰኝ ስክሪንሹት ሊንክ / Receipt URL *</label>
-      <input type="url" id="receipt_url" required placeholder="https://...">
-    </div>
+        // Form Submission to Supabase
+        const form = document.getElementById('registrationForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            const messageBox = document.getElementById('messageBox');
 
-    <button type="submit">ምዝገባውን ላክ</button>
-  </form>
+            submitBtn.disabled = true;
+            submitBtn.textContent = ' በመላክ ላይ...';
 
-  <div id="message"></div>
-</div>
+            const formData = {
+                full_name: document.getElementById('fullName').value,
+                age: parseInt(document.getElementById('age').value),
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                department: document.getElementById('department').value
+            };
 
-<script>
-  // 1. የ Supabase ማገናኛ ቁልፎች (እነዚህን በራስህ ተካ)
-  const SUPABASE_URL = "https://mnsqffaojwnxvuyqmzwu.supabase.co/rest/v1/";
-  const SUPABASE_ANON_KEY = "sb_publishable_IKJ_-x0hH7bhn5vizv4yuw_X1v2EhxZ";
+            const { data, error } = await supabaseClient
+                .from('registrations')
+                .insert([formData]);
 
-  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-  function updateAmount() {
-    const days = document.getElementById("days_per_week").value;
-    const amountDisplay = document.getElementById("amountDisplay");
-    if (days === "2 ቀን") amountDisplay.innerText = "1,200";
-    else if (days === "3 ቀን") amountDisplay.innerText = "1,500";
-    else amountDisplay.innerText = "0";
-  }
-
-  document.getElementById("registrationForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const msg = document.getElementById("message");
-    msg.style.color = "blue";
-    msg.innerText = "እየላከ ነው... እባክዎን ይቆዩ";
-
-    const days = document.getElementById("days_per_week").value;
-    const amount = days === "2 ቀን" ? 1200 : 1500;
-
-    const studentData = {
-      full_name: document.getElementById("full_name").value,
-      phone: document.getElementById("phone").value,
-      gender: document.getElementById("gender").value,
-      city: document.getElementById("city").value,
-      telegram_username: document.getElementById("telegram_username").value,
-      course_type: document.getElementById("course_type").value,
-      days_per_week: days,
-      amount: amount,
-      transaction_id: document.getElementById("transaction_id").value,
-      receipt_url: document.getElementById("receipt_url").value
-    };
-
-    const { data, error } = await supabase.from('registrations').insert([studentData]);
-
-    if (error) {
-      msg.style.color = "red";
-      msg.innerText = "ስህተት፦ " + error.message;
-    } else {
-      msg.style.color = "green";
-      msg.innerText = "ምዝገባዎ በስኬት ተጠናቋል! እናመሰግናለን።";
-      document.getElementById("registrationForm").reset();
-      document.getElementById("amountDisplay").innerText = "0";
-    }
-  });
-</script>
-
+            messageBox.classList.remove('hidden');
+            if (error) {
+                messageBox.className = 'p-3 rounded-lg text-sm text-center bg-red-900/50 text-red-200 border border-red-700';
+                messageBox.textContent = 'ምዝገባው አልተሳካም: ' + error.message;
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'ምዝገባውን አጠናቅ ፃፍ ✓';
+            } else {
+                messageBox.className = 'p-3 rounded-lg text-sm text-center bg-emerald-900/50 text-emerald-200 border border-emerald-700';
+                messageBox.textContent = 'ምዝገባዎ በအောင်ነት ተመዝግቧል! እናመሰግናለን።';
+                form.reset();
+                setTimeout(() => {
+                    nextStep(1);
+                    messageBox.classList.add('hidden');
+                }, 4000);
+            }
+        });
+    </script>
 </body>
 </html>
 
