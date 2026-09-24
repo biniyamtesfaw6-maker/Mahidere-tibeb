@@ -3,50 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ አብነት ትምህርት ቤት - የተማሪ ምዝገባ እና ክፍያ ቅጽ</title>
-    <!-- Tailwind CSS CDN -->
+    <title>የአብነት ትምህርት ቤት ምዝገባ እና ክፍያ ቅጽ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Supabase JS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', 'Noto Serif Ethiopic', serif;
-        }
-        .eth-font {
-            font-family: 'Noto Serif Ethiopic', serif;
-        }
+        body { font-family: 'Plus Jakarta Sans', 'Noto Serif Ethiopic', serif; }
+        .eth-font { font-family: 'Noto Serif Ethiopic', serif; }
         .glass-card {
-            background: rgba(13, 17, 28, 0.9);
+            background: rgba(13, 17, 28, 0.92);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(139, 92, 246, 0.25);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 35px rgba(139, 92, 246, 0.1);
         }
-        .glow-button {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .glow-button:hover {
-            box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
-            transform: translateY(-1px);
-        }
-        input:focus, select:focus, textarea:focus {
-            box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.4);
-        }
+        .glow-button { position: relative; overflow: hidden; transition: all 0.3s ease; }
+        .glow-button:hover { box-shadow: 0 0 25px rgba(139, 92, 246, 0.5); transform: translateY(-1px); }
+        input:focus, select:focus, textarea:focus { box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.4); }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4 relative overflow-x-hidden">
 
-    <!-- Background Ambient Glow Effects -->
     <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="max-w-xl w-full glass-card rounded-3xl overflow-hidden p-6 sm:p-10 relative z-10">
-        
-        <!-- Header -->
+
         <div class="text-center mb-6">
             <div class="inline-flex p-3.5 bg-gradient-to-br from-indigo-500/20 to-purple-600/10 border border-indigo-500/30 rounded-2xl mb-3 text-indigo-400 shadow-inner">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -54,18 +36,15 @@
                 </svg>
             </div>
             <h1 class="eth-font text-lg sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 via-purple-300 to-pink-400 mb-1">የአብነት ትምህርት ቤት ምዝገባ እና ክፍያ ቅጽ</h1>
-            <p class="text-xs text-slate-400">እባክዎ ደረጃ በደረጃ ቅጹን በትክክል ይሙሉ (15 ገጾች)</p>
-            
-            <!-- Step Counter Text -->
+            <p class="text-xs text-slate-400">አባክዎ ደረጃ በደረጃ ቅጹን በትክክል ይሙሉ (15 ገጾች)</p>
             <div class="mt-3 text-xs font-semibold text-indigo-400 bg-indigo-950/60 py-1 px-3 rounded-full inline-block border border-indigo-800/50">
                 ገጽ <span id="current-step-num">1</span> ከ 15
             </div>
         </div>
 
-        <!-- Multi-step Form -->
         <form id="registrationForm">
-            
-            <!-- Step 1: First Name -->
+
+            <!-- Step 1 -->
             <div id="step-1" class="space-y-4">
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">1. ስም (First Name)</h2>
                 <div>
@@ -76,7 +55,7 @@
                 </div>
             </div>
 
-            <!-- Step 2: Last Name -->
+            <!-- Step 2 -->
             <div id="step-2" class="space-y-4 hidden">
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">2. የአባት ስም (Last Name)</h2>
                 <div>
@@ -88,7 +67,7 @@
                 </div>
             </div>
 
-            <!-- Step 3: Phone Number -->
+            <!-- Step 3 -->
             <div id="step-3" class="space-y-4 hidden">
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">3. ስልክ ቁጥር</h2>
                 <div>
@@ -100,7 +79,7 @@
                 </div>
             </div>
 
-            <!-- Step 4: Gender -->
+            <!-- Step 4 -->
             <div id="step-4" class="space-y-4 hidden">
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">4. ጾታ</h2>
                 <div>
@@ -116,7 +95,7 @@
                 </div>
             </div>
 
-            <!-- Step 5: City -->
+            <!-- Step 5 -->
             <div id="step-5" class="space-y-4 hidden">
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">5. የሚኖሩበት ከተማ</h2>
                 <div>
@@ -128,7 +107,7 @@
                 </div>
             </div>
 
-            <!-- Step 6: Country -->
+            <!-- Step 6 -->
             <div id="step-6" class="space-y-4 hidden">
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">6. ሀገር</h2>
                 <div>
@@ -140,7 +119,7 @@
                 </div>
             </div>
 
-            <!-- Step 7: Birth Date -->
+            <!-- Step 7 -->
             <div id="step-7" class="space-y-4 hidden">
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">7. የልደት ቀን</h2>
                 <div>
@@ -152,7 +131,7 @@
                 </div>
             </div>
 
-            <!-- Step 8: Profession -->
+            <!-- Step 8 -->
             <div id="step-8" class="space-y-4 hidden">
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">8. የተሰማሩበት ሙያ</h2>
                 <div>
@@ -164,7 +143,7 @@
                 </div>
             </div>
 
-            <!-- Step 9: Telegram Username -->
+            <!-- Step 9 -->
             <div id="step-9" class="space-y-4 hidden">
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">9. የቴሌግራም መለያ (Username)</h2>
                 <div>
@@ -176,7 +155,7 @@
                 </div>
             </div>
 
-            <!-- Step 10: Prior Experience -->
+            <!-- Step 10 -->
             <div id="step-10" class="space-y-4 hidden">
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">10. ከአሁን በፊት የአብነት ትምህርት የቀሰሙ መሆን አለመሆን</h2>
                 <div>
@@ -192,7 +171,7 @@
                 </div>
             </div>
 
-            <!-- Step 11: Learning Goal -->
+            <!-- Step 11 -->
             <div id="step-11" class="space-y-4 hidden">
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">11. የመማር ዓላማ</h2>
                 <div>
@@ -204,7 +183,7 @@
                 </div>
             </div>
 
-            <!-- Step 12: Learning Way -->
+            <!-- Step 12 -->
             <div id="step-12" class="space-y-4 hidden">
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">12. መማር የሚፈልጉበት መንገድ</h2>
                 <div>
@@ -219,16 +198,16 @@
                 </div>
             </div>
 
-            <!-- Step 13: Department / Subject -->
+            <!-- Step 13 -->
             <div id="step-13" class="space-y-4 hidden">
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">13. መማር የሚፈልጉትን ትምህርት ይምረጡ</h2>
                 <div>
                     <select id="department" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500">
                         <option value="">ትምህርት ይምረጡ</option>
                         <option value="ንባብ(ወንጌል ዮሐንስ; መዝሙረ ዳዊት..)">ንባብ (ወንጌል ዮሐንስ; መዝሙረ ዳዊት..)</option>
-                        <option value="ቃል(ውዳሴ ማርያም; መልክዓ ማርያም..)">ቃል (ውዳሴ ማርያም; መልክዓ ማርያም..)</option>
-                        <option value="ዜማ(ውዳሴ ማርያም; መስተጋብዕ..)">ዜማ (ውዳሴ ማርያም; መስተጋብዕ..)</option>
-                        <option value="ቅዳሴ(ተሰጥኦ; ግብረ ዲቁና..)">ቅዳሴ (ተሰጥኦ; ግብረ ዲቁና..)</option>
+                        <option value="ቃል(ውዳሴ ማርያም; ማኅሌተ ማርያም..)">ቃል (ውዳሴ ማርያም; ማኅሌተ ማርያም..)</option>
+                        <option value="ዜማ(ውዳሴ ማርያም; አስተንትኖ..)">ዜማ (ውዳሴ ማርያም; አስተንትኖ..)</option>
+                        <option value="ቅኔ(ተአምራ; ግብረ ዳዊት..)">ቅኔ (ተአምራ; ግብረ ዳዊት..)</option>
                     </select>
                 </div>
                 <div class="flex justify-between pt-4">
@@ -237,14 +216,14 @@
                 </div>
             </div>
 
-            <!-- Step 14: Days per Week -->
+            <!-- Step 14 -->
             <div id="step-14" class="space-y-4 hidden">
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">14. በሳምንት ስንት ቀናት ለመማር ይፈልጋሉ?</h2>
                 <div>
                     <select id="daysPerWeek" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500">
                         <option value="">ቀናት ይምረጡ</option>
-                        <option value="2 ቀናት (1200 ብር)">2 ቀናት - 1200 ብር (ለ 1 ሰዓት)</option>
-                        <option value="3 ቀናት (1700 ብር)">3 ቀናት - 1700 ብር (ለ 1 ሰዓት)</option>
+                        <option value="2 ቀናት (900 ብር)">2 ቀናት - 900 ብር (ለ 1 ሰዓት)</option>
+                        <option value="3 ቀናት (1100 ብር)">3 ቀናት - 1100 ብር (ለ 1 ሰዓት)</option>
                     </select>
                 </div>
                 <div class="flex justify-between pt-4">
@@ -253,15 +232,15 @@
                 </div>
             </div>
 
-            <!-- Step 15: Payment & Receipt Upload -->
+            <!-- Step 15 -->
             <div id="step-15" class="space-y-4 hidden">
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">15. የክፍያ መረጃ እና የባንክ ደረሰኝ ማስገቢያ</h2>
                 <div class="p-4 bg-slate-900/95 border border-indigo-500/30 rounded-2xl text-xs space-y-2 text-slate-300 shadow-inner">
                     <p class="font-bold text-indigo-300">የባንክ አካውንት ዝርዝር:</p>
-                    <p> አቢሲኒያ ባንክ (BOA): <span class="font-bold text-white">115765288</span></p>
+                    <p>ኢትዮጵያ ንግድ ባንክ (CBE): <span class="font-bold text-white">1000797376527</span></p>
                     <hr class="border-slate-800 my-1.5">
                     <p class="text-slate-400">* ክፍያውን ከላይ በተቀመጠው የባንክ አካውንት ፈጽመው የባንክ ደረሰኙን (Screenshot) ከታች በማስገባት ምዝገባውን ይጨርሱ።</p>
-                    <p class="text-pink-300/90">* ትምህርቱን ለመማር ክፍያ ከፈጸሙ በኋላ ገንዘብ ተመላሽ አይሆንም።</p>
+                    <p class="text-pink-300/90">* ትምህርቱን ለመማር ክፍያ ከፈጸሙ በኋላ ገንዘብ ተመላሽ አይሆንም፤</p>
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-slate-300 mb-1">የባንክ የክፍያ ደረሰኝ ፎቶ (Receipt Screenshot) ማስገቢያ</label>
@@ -277,32 +256,24 @@
         </form>
     </div>
 
-    <!-- Script to handle Wizard and Supabase -->
     <script>
-        const SUPABASE_URL = 'https:// mnsąffaojwnxvuyqmzwu.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_IKJ_-x0hH7bhn5vizv4yuw_X1v2Ehx2';
-        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const SUPABASE_URL = 'https://mnsqffaojwnxvuyqmzwu.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_IKJ_-x0hH7bhn5vizv4yuw_X1v2Ehx2';
+        const supabaseClient = supabase.createClient(SUPABASE_URL.trim(), SUPABASE_KEY.trim());
 
         let currentStep = 1;
         const totalSteps = 15;
 
         function changeStep(direction) {
-            // Validation before proceeding forward
-            if (direction === 1) {
-                if (currentStep === 1 && !document.getElementById('firstName').value) { alert('እባክዎ ስምዎን ያስገቡ'); return; }
-                if (currentStep === 2 && !document.getElementById('lastName').value) { alert('እባክዎ የአባት ስምዎን ያስገቡ'); return; }
-                if (currentStep === 3 && !document.getElementById('phone').value) { alert('እባክዎ ስልክ ቁጥርዎን ያስገቡ'); return; }
-                if (currentStep === 4 && !document.getElementById('gender').value) { alert('እባክዎ ጾታ ይምረጡ'); return; }
-                if (currentStep === 5 && !document.getElementById('city').value) { alert('እባክዎ ከተማ ያስገቡ'); return; }
-                if (currentStep === 7 && !document.getElementById('birthDate').value) { alert('እባክዎ የልደት ቀን ይምረጡ'); return; }
-                if (currentStep === 8 && !document.getElementById('profession').value) { alert('እባክዎ ሙያዎን ያስገቡ'); return; }
-                if (currentStep === 9 && !document.getElementById('telegramUser').value) { alert('እባክዎ የቴሌግራም መለያ ያስገቡ'); return; }
-                if (currentStep === 10 && !document.getElementById('priorExperience').value) { alert('እባክዎ ምርጫ ያድርጉ'); return; }
-                if (currentStep === 11 && !document.getElementById('learningGoal').value) { alert('እባክዎ የመማር ዓላማዎን ይጻፉ'); return; }
-                if (currentStep === 13 && !document.getElementById('department').value) { alert('እባክዎ ትምህርት ይምረጡ'); return; }
-                if (currentStep === 14 && !document.getElementById('daysPerWeek').value) { alert('እባክዎ የቀናት ብዛት ይምረጡ'); return; }
+            if (direction > 0) {
+                const field = document.querySelector(
+                    `#step-${currentStep} input, #step-${currentStep} select, #step-${currentStep} textarea`
+                );
+                if (field && !field.value.trim()) {
+                    field.reportValidity();
+                    return;
+                }
             }
-
             const next = currentStep + direction;
             if (next >= 1 && next <= totalSteps) {
                 document.getElementById(`step-${currentStep}`).classList.add('hidden');
@@ -318,69 +289,76 @@
             const submitBtn = document.getElementById('submitBtn');
             const messageBox = document.getElementById('messageBox');
 
+            function showMsg(ok, text) {
+                messageBox.classList.remove('hidden');
+                messageBox.className = 'p-3 rounded-xl text-xs text-center font-medium border ' +
+                    (ok ? 'bg-emerald-950 text-emerald-200 border-emerald-800'
+                        : 'bg-red-950 text-red-200 border-red-800');
+                messageBox.textContent = text;
+            }
+
             submitBtn.disabled = true;
             submitBtn.textContent = 'በመላክ ላይ...';
 
-            let receiptUrl = '';
-            const receiptFile = document.getElementById('receiptPhoto').files[0];
+            try {
+                let receiptUrl = '';
+                const receiptFile = document.getElementById('receiptPhoto').files[0];
 
-            if (receiptFile) {
-                const fileName = `${Date.now()}_${receiptFile.name}`;
-                const { data: uploadData, error: uploadError } = await supabaseClient.storage
-                    .from('receipts')
-                    .upload(fileName, receiptFile);
+                if (receiptFile) {
+                    const ext = (receiptFile.name.split('.').pop() || 'jpg').toLowerCase();
+                    const fileName = `${Date.now()}_${Math.random().toString(36).slice(2, 8)}.${ext}`;
 
-                if (!uploadError) {
-                    const { data: publicUrlData } = supabaseClient.storage
+                    const { error: uploadError } = await supabaseClient.storage
+                        .from('receipts')
+                        .upload(fileName, receiptFile, { contentType: receiptFile.type });
+
+                    if (uploadError) throw new Error('ደረሰኝ አልተጫነም: ' + uploadError.message);
+
+                    const { data: urlData } = supabaseClient.storage
                         .from('receipts')
                         .getPublicUrl(fileName);
-                    receiptUrl = publicUrlData.publicUrl;
+                    receiptUrl = urlData.publicUrl;
                 }
-            }
 
-            const formData = {
-                first_name: document.getElementById('firstName').value,
-                last_name: document.getElementById('lastName').value,
-                phone: document.getElementById('phone').value,
-                gender: document.getElementById('gender').value,
-                city: document.getElementById('city').value,
-                country: document.getElementById('country').value,
-                birth_date: document.getElementById('birthDate').value,
-                profession: document.getElementById('profession').value,
-                telegram_user: document.getElementById('telegramUser').value,
-                prior_experience: document.getElementById('priorExperience').value,
-                learning_goal: document.getElementById('learningGoal').value,
-                learning_way: document.getElementById('learningWay').value,
-                department: document.getElementById('department').value,
-                days_per_week: document.getElementById('daysPerWeek').value,
-                receipt_url: receiptUrl
-            };
+                const g = (id) => document.getElementById(id).value;
+                const formData = {
+                    first_name: g('firstName'),
+                    last_name: g('lastName'),
+                    phone: g('phone'),
+                    gender: g('gender'),
+                    city: g('city'),
+                    country: g('country'),
+                    birth_date: g('birthDate'),
+                    profession: g('profession'),
+                    telegram_user: g('telegramUser'),
+                    prior_experience: g('priorExperience'),
+                    learning_goal: g('learningGoal'),
+                    learning_way: g('learningWay'),
+                    department: g('department'),
+                    days_per_week: g('daysPerWeek'),
+                    receipt_url: receiptUrl
+                };
 
-            const { data, error } = await supabaseClient
-                .from('registrations')
-                .insert([formData]);
+                const { error } = await supabaseClient.from('registrations').insert([formData]);
+                if (error) throw new Error(error.message);
 
-            messageBox.classList.remove('hidden');
-            if (error) {
-                messageBox.className = 'p-3 rounded-xl text-xs text-center bg-red-950 text-red-200 border border-red-800';
-                messageBox.textContent = 'ምዝገባው አልተሳካም: ' + error.message;
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'ምዝገባውን አጠናቅ';
-            } else {
-                messageBox.className = 'p-3 rounded-xl text-xs text-center bg-emerald-950 text-emerald-200 border border-emerald-800';
-                messageBox.textContent = 'ምዝገባዎ እና የክፍያ ደረሰኝዎ በအောင်ነት ተመዝግቧል! እናመሰግናለን።';
+                showMsg(true, 'ምዝገባዎ እና የክፍያ ደረሰኝዎ በተሳካ ሁኔታ ተመዝግቧል! እናመሰግናለን።');
                 form.reset();
                 setTimeout(() => {
                     document.getElementById(`step-${currentStep}`).classList.add('hidden');
                     currentStep = 1;
                     document.getElementById('step-1').classList.remove('hidden');
-                    document.getElementById('current-step-num').textContent = currentStep;
+                    document.getElementById('current-step-num').textContent = 1;
                     messageBox.classList.add('hidden');
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'ምዝገባውን አጠናቅ';
                 }, 4000);
+            } catch (err) {
+                showMsg(false, 'ምዝገባው አልተሳካም: ' + err.message);
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'ምዝገባውን አጠናቅ';
             }
         });
     </script>
 </body>
-</html>
+    </html>
