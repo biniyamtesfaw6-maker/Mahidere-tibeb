@@ -37,7 +37,7 @@
             </div>
             <h1 class="eth-font text-lg sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 via-purple-300 to-pink-400 mb-1">የአብነት ትምህርት ቤት ምዝገባ እና ክፍያ ቅጽ</h1>
             <p class="text-xs text-slate-400">አባክዎ ደረጃ በደረጃ ቅጹን በትክክል ይሙሉ (15 ገጾች)</p>
-            <div class="mt-3 text-xs font-semibold text-indigo-400 bg-indigo-950/60 py-1 px-3 rounded-full inline-block border border-indigo-800/50">
+            <div id="step-counter-box" class="mt-3 text-xs font-semibold text-indigo-400 bg-indigo-950/60 py-1 px-3 rounded-full inline-block border border-indigo-800/50">
                 ገጽ <span id="current-step-num">1</span> ከ 15
             </div>
         </div>
@@ -157,7 +157,7 @@
 
             <!-- Step 10 -->
             <div id="step-10" class="space-y-4 hidden">
-                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">10. ከአሁን በፊት የአብነት ትምህርት የቀሰሙ መሆን አለመሆን</h2>
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">10. ከአሁን በፊት የአብነት ትምህርት የቀስመዋል ?</h2>
                 <div>
                     <select id="priorExperience" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500">
                         <option value="">ምረጡ</option>
@@ -204,10 +204,10 @@
                 <div>
                     <select id="department" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500">
                         <option value="">ትምህርት ይምረጡ</option>
-                        <option value="ንባብ(ወንጌል ዮሐንስ; መዝሙረ ዳዊት..)">ንባብ (ወንጌል ዮሐንስ; መዝሙረ ዳዊት..)</option>
-                        <option value="ቃል(ውዳሴ ማርያም; ማኅሌተ ማርያም..)">ቃል (ውዳሴ ማርያም; ማኅሌተ ማርያም..)</option>
-                        <option value="ዜማ(ውዳሴ ማርያም; አስተንትኖ..)">ዜማ (ውዳሴ ማርያም; አስተንትኖ..)</option>
-                        <option value="ቅኔ(ተአምራ; ግብረ ዳዊት..)">ቅኔ (ተአምራ; ግብረ ዳዊት..)</option>
+                        <option value="ንባብ(ወንጌል ዮሐንስ; መዝሙረ ዳዊት; ድርሳን..)">ንባብ (ወንጌል ዮሐንስ; መዝሙረ ዳዊት; ድርሳን..)</option>
+                        <option value="ቃል(ውዳሴ ማርያም; መልክዓ ማርያም..)">ቃል (ውዳሴ ማርያም; መልክዓ ማርያም..)</option>
+                        <option value="ዜማ(ውዳሴ ማርያም; መስተጋብዕ; ስብሐተ ነግህ..)">ዜማ (ውዳሴ ማርያም; መስተጋብዕ; ስብሐተ ነግህ..)</option>
+                        <option value="ቅዳሴ(ተሰጥኦ; ግብረ ዲቁና..)">ቅዳሴ (ተሰጥኦ; ግብረ ዲቁና..)</option>
                     </select>
                 </div>
                 <div class="flex justify-between pt-4">
@@ -221,9 +221,9 @@
                 <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">14. በሳምንት ስንት ቀናት ለመማር ይፈልጋሉ?</h2>
                 <div>
                     <select id="daysPerWeek" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500">
-                        <option value="">ቀናት ይምረጡ</option>
-                        <option value="2 ቀናት (900 ብር)">2 ቀናት - 900 ብር (ለ 1 ሰዓት)</option>
-                        <option value="3 ቀናት (1100 ብር)">3 ቀናት - 1100 ብር (ለ 1 ሰዓት)</option>
+                        <option value="">በሳምንት ምን ያህል ቀናት መማር ይፈልጋሉ? ቀናት ይምረጡ</option>
+                        <option value="በሳምንት 2 ቀናት ያህል (1200 ብር)">2 ቀናት - 1200 ብር (ለ 2 ሰዓት)</option>
+                        <option value="በሳምንት 3 ቀናት ያህል (1700 ብር)">3 ቀናት - 1700 ብር (ለ 2 ሰዓት)</option>
                     </select>
                 </div>
                 <div class="flex justify-between pt-4">
@@ -254,6 +254,32 @@
             </div>
 
         </form>
+
+        <!-- Success Result View (Hidden by default, shown on completion) -->
+        <div id="successView" class="hidden text-center py-6 space-y-4">
+            <div class="inline-flex p-3 bg-emerald-500/20 border border-emerald-500/40 rounded-full text-emerald-400 shadow-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <h2 class="eth-font text-lg font-bold text-emerald-300">እንኳን ደስ አሎት!</h2>
+            <p class="text-xs text-slate-300 leading-relaxed px-2">
+                መረጃዎ ወደሚመለከተው አካል ገብቷል ተረጋግጦ ሲጠናቀቅ ባስገቡት የቴሌግራም ዩዘር ኔም መልዕክት ይላክሎታል፡
+            </p>
+
+            <!-- User summary preview box -->
+            <div id="userSummaryBox" class="bg-slate-900/90 border border-indigo-500/30 rounded-2xl p-4 text-left text-xs space-y-2 text-slate-300">
+                <p class="font-bold text-indigo-300 border-b border-slate-800 pb-1 mb-2">ያስገቧቸው መረጃዎች ማጠቃለያ፡</p>
+                <!-- Dynamic summary will be injected here -->
+            </div>
+
+            <div class="pt-2">
+                <a href="https://t.me/Mahderetibeb12" target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl shadow-lg transition">
+                    👉🏻 @Mahderetibeb12
+                </a>
+            </div>
+        </div>
+
     </div>
 
     <script>
@@ -342,17 +368,26 @@
                 const { error } = await supabaseClient.from('registrations').insert([formData]);
                 if (error) throw new Error(error.message);
 
-                showMsg(true, 'ምዝገባዎ እና የክፍያ ደረሰኝዎ በተሳካ ሁኔታ ተመዝግቧል! እናመሰግናለን።');
-                form.reset();
-                setTimeout(() => {
-                    document.getElementById(`step-${currentStep}`).classList.add('hidden');
-                    currentStep = 1;
-                    document.getElementById('step-1').classList.remove('hidden');
-                    document.getElementById('current-step-num').textContent = 1;
-                    messageBox.classList.add('hidden');
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'ምዝገባውን አጠናቅ';
-                }, 4000);
+                // Populate user summary into success screen
+                const summaryBox = document.getElementById('userSummaryBox');
+                summaryBox.innerHTML = `
+                    <p class="font-bold text-indigo-300 border-b border-slate-800 pb-1 mb-2">ያስገቧቸው መረጃዎች ማጠቃለያ፡</p>
+                    <div class="grid grid-cols-2 gap-x-2 gap-y-1">
+                        <p><span class="text-slate-400">ስም:</span> <span class="text-white">${formData.first_name} ${formData.last_name}</span></p>
+                        <p><span class="text-slate-400">ስልክ:</span> <span class="text-white">${formData.phone}</span></p>
+                        <p><span class="text-slate-400">ጾታ:</span> <span class="text-white">${formData.gender}</span></p>
+                        <p><span class="text-slate-400">ከተማ:</span> <span class="text-white">${formData.city}</span></p>
+                        <p><span class="text-slate-400">ቴሌግራም:</span> <span class="text-white">${formData.telegram_user}</span></p>
+                        <p><span class="text-slate-400">ትምህርት:</span> <span class="text-white">${formData.department}</span></p>
+                        <p class="col-span-2"><span class="text-slate-400">የክፍያ/የቀናት ምርጫ:</span> <span class="text-white">${formData.days_per_week}</span></p>
+                    </div>
+                `;
+
+                // Hide the form and step counter, then show the professional success view
+                form.classList.add('hidden');
+                document.getElementById('step-counter-box').classList.add('hidden');
+                document.getElementById('successView').classList.remove('hidden');
+
             } catch (err) {
                 showMsg(false, 'ምዝገባው አልተሳካም: ' + err.message);
                 submitBtn.disabled = false;
@@ -361,4 +396,5 @@
         });
     </script>
 </body>
-    </html>
+</html>
+
