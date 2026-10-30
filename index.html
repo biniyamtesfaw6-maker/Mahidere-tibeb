@@ -1,577 +1,466 @@
-<!DOCTYPE html>
-<html lang="am">
+[10/30/2026 6:30 PM] ᙘᴇꋊɪ ፲፮ ♱: <!DOCTYPE html>
+<html lang="am" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ዕዝራ ሱቱኤል | አብነት ትምህርት ቤት</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Plus Jakarta Sans", "Noto Serif Ethiopic", sans-serif;
-      background: #090b14;
-      color: #f8fafc;
-    }
-    .eth { font-family: "Noto Serif Ethiopic", serif; }
-    .glass {
-      background: rgba(17, 20, 35, .96);
-      border: 1px solid rgba(167,139,250,.25);
-      box-shadow: 0 25px 80px #0008;
-    }
-    .field {
-      width: 100%;
-      background: #0b1020;
-      color: white;
-      border: 1px solid #35394d;
-      border-radius: 12px;
-      padding: 13px;
-      margin-top: 7px;
-      outline: none;
-    }
-    .field:focus {
-      border-color: #a78bfa;
-      box-shadow: 0 0 0 3px #8b5cf633;
-    }
-    .field option { background: #111426; }
-    .primary {
-      background: linear-gradient(110deg,#6d4aff,#9333ea);
-      color: white;
-      border-radius: 12px;
-      padding: 13px 20px;
-      font-weight: 700;
-    }
-    .primary:disabled { opacity: .5; }
-    .section-title { color: #ddd6fe; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ዕዝራ ሱቱኤል የአብነት ትምህርት ቤት - ምዝገባ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', 'Noto Serif Ethiopic', serif; }
+        .eth-font { font-family: 'Noto Serif Ethiopic', serif; }
+        .glass-card {
+            background: rgba(13, 17, 28, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 35px rgba(139, 92, 246, 0.1);
+        }
+        .glow-button { position: relative; overflow: hidden; transition: all 0.3s ease; }
+        .glow-button:hover { box-shadow: 0 0 25px rgba(139, 92, 246, 0.5); transform: translateY(-1px); }
+        input:focus, select:focus, textarea:focus { box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.4); }
+    </style>
 </head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-3 sm:p-6 relative overflow-x-hidden">
 
-<body class="min-h-screen px-4 py-8">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-  <main class="mx-auto max-w-3xl">
+    <div class="max-w-2xl w-full glass-card rounded-3xl overflow-hidden p-6 sm:p-10 relative z-10 my-6">
 
-    <header class="mb-8 text-center">
-      <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl border border-violet-400/30 bg-violet-500/10 text-3xl">
-        ✦
-      </div>
-
-      <p class="mb-2 text-xs uppercase tracking-widest text-violet-300">
-        EZRA SUTUEL ONLINE ABNET SCHOOL
-      </p>
-
-      <h1 class="eth text-2xl font-bold leading-relaxed text-violet-200 sm:text-3xl">
-        ዕዝራ ሱቱኤል የአብነት ትምህርት ቤት
-      </h1>
-
-      <p class="eth mt-3 text-sm leading-7 text-slate-400">
-        የቤተ ክርስቲያን ትውፊትንና ጥንታዊ ዕውቀትን ለትውልድ እናስተላልፋለን።
-      </p>
-    </header>
-
-    <section class="glass rounded-3xl p-5 sm:p-8">
-
-      <div class="mb-7">
-        <div class="mb-2 flex justify-between text-xs text-slate-400">
-          <span id="stepLabel">ደረጃ 1 ከ 4</span>
-          <span id="percent">25%</span>
+        <div class="text-center mb-6">
+            <h1 class="eth-font text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-indigo-200 to-purple-300 mb-1">
+                ዕዝራ ሱቱኤል የአብነት ትምህርት ቤት
+            </h1>
+            <p class="text-xs text-slate-400">የኦንላይን መንፈሳዊ ትምህርት ቤት ምዝገባ እና ክፍያ ቅጽ</p>
+            <div id="step-counter-box" class="mt-3 text-xs font-semibold text-indigo-400 bg-indigo-950/60 py-1 px-3 rounded-full inline-block border border-indigo-800/50">
+                ደረጃ <span id="current-step-num">1</span> ከ 17
+            </div>
         </div>
-        <div class="h-1.5 overflow-hidden rounded-full bg-slate-800">
-          <div id="progress" class="h-full rounded-full bg-violet-500" style="width:25%"></div>
-        </div>
-      </div>
 
-      <form id="registrationForm">
+        <form id="registrationForm">
 
-        <!-- STEP 1: Personal information -->
-        <section class="step" data-step="1">
-          <h2 class="eth section-title mb-5 text-xl font-bold">1. የግል መረጃ</h2>
+            <!-- Step 1: Introduction -->
+            <div id="step-1" class="space-y-4">
+                <div class="p-5 bg-indigo-950/40 border border-indigo-500/30 rounded-2xl space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed max-h-[60vh] overflow-y-auto eth-font">
+                    <h3 class="font-bold text-amber-300 text-center text-base border-b border-indigo-500/20 pb-2">ዕዝራ ሱቱኤል የአብነት ትምህርት ቤት</h3>
+                    <p class="leading-relaxed">
+                        ዕዝራ ሱቱኤል በየትኛውም ቦታ እና በማንኛውም ሁኔታ ላይ ለሚገኝ የአብነት ትምህርትን በአካል ተገኝቶ መማር ላልቻለ ምእመናን፣ ዲያቆናት መሠረታዊ እና ለተግባራዊ አገልግሎት የሚውል የአብነት ትምህርትን ማዳረስ ዓላማ አድርጎ የሚንቀሳቀስ ዘመናዊ የኦንላይን መንፈሳዊ ትምህርት ቤት ነው።
+                    </p>
+                    
+                    <div class="space-y-2">
+                        <p class="font-bold text-amber-300 text-xs uppercase tracking-wide">1. ትምህርት ቤታችንን ከሌሎች ለየት የሚያደርገን፦</p>
+                        <ul class="list-disc pl-4 space-y-2 text-slate-300 text-xs">
+                            <li>
+                                <strong class="text-indigo-200">ሁለት የተለዩ የትምህርት ዘርፎች (ለተማሪው ፍላጎት የተበጀ)፦</strong>
+                                <ul class="list-disc pl-4 mt-1 space-y-1">
+                                    <li><strong class="text-white">መደበኛ የአብነት ትምህርት፦</strong> ለአገልግሎትና ለክህነት የተሟላ ዕውቀት ማበልጸግ ለሚፈልጉ ተማሪዎች (ግዕዝ፣ ዜማ፣ ቅዳሴ፣ ቅኔና ትርጓሜ) ደረጃ በደረጃ የሚሰጥ መደበኛ ትምህርት።</li>
+[10/30/2026 6:30 PM] ᙘᴇꋊɪ ፲፮ ♱: <li><strong class="text-white">የአገልግሎት ትምህርት፦</strong> ምእመናን በቤተ መቅደስ፣ በሰንበት ትምህርት ቤትና በዕለት ተዕለት መንፈሳዊ ሕይወታቸው በአገልግሎት ላይ ብቻ የሚውሉ መሠረታዊ የጸሎት፣ የዜማና የቅዳሴ ተሳትፎዎችን በፍጥነትና በትግባር የሚማሩበት ልዩ መስመር።</li>
+                                </ul>
+                            </li>
+                            <li><strong class="text-indigo-200">በተመደበው ጊዜ ማጠናቀቅ (Time-bound Completion)፦</strong> ተማሪዎች የተመደበላቸውን የትምህርት ደረጃ በተወሰነው ወራት ውስጥ በፍጥነት እና በትኩረት አጠናቀው እንዲወጡ የተዋቀረ ሥርዓተ ትምህርት ነው።</li>
+                            <li><strong class="text-indigo-200">የኦንላይን ምስክር ወረቀት (Online Certificate)፦</strong> ትምህርታቸውን በተመደበው ጊዜ አጠናቀው የሚወጡ ተማሪዎች የትምህርት ደረጃቸውን የሚያረጋግጥ ሕጋዊ የኦንላይን የምስክር ወረቀት (Digital Certificate) ይሰጣቸዋል።</li>
+                        </ul>
+                    </div>
 
-          <div class="grid gap-4 sm:grid-cols-2">
-            <label class="eth text-sm">
-              ስም *
-              <input class="field" id="firstName" required placeholder="ስም">
-            </label>
+                    <div class="space-y-2">
+                        <p class="font-bold text-amber-300 text-xs uppercase tracking-wide">2. ዋና ዋና ዓላማዎቻችን፦</p>
+                        <ul class="list-disc pl-4 space-y-1 text-slate-300 text-xs">
+                            <li><strong class="text-white">ተግባራዊ አገልጋይ ማፍራት፦</strong> ምእመናን በቅዱስ ያሬድ ዜማ፣ በግዕዝ ቋንቋ እና በቤተ ክርስቲያን ጸሎቶች ተኮትኩተው በሥርዓተ አምልኮ ላይ ንቁ ተሳታፊና አገልጋይ እንዲሆኑ ማድረግ።</li>
+                            <li><strong class="text-white">የአብነት ጥበብን ማደስ፦</strong> በዘመናዊ ሕይወት ጫና ምክንያት እየተዘነጉ የመጡትን ጥንታዊ የአብነት ትምህርቶች ለዛቸውን ሳይለቁ ለቀጣዩ ትውልድ ማስተላለፍ።</li>
+                            <li><strong class="text-white">የክህነትና የአገልግሎት ዝግጅት፦</strong> ለዲያቆናትና ለካህናት ለአገልግሎት የሚያበቁ የቅዳሴ፣ የዜማና የሰዓታት ትምህርቶችን በተደራጀ መልኩ ማዳረስ።</li>
+                        </ul>
+                    </div>
 
-            <label class="eth text-sm">
-              የአባት ስም *
-              <input class="field" id="lastName" required placeholder="የአባት ስም">
-            </label>
+                    <div class="space-y-1">
+                        <p class="font-bold text-amber-300 text-xs uppercase tracking-wide">3. የሚያስተምሩ መምህራን፦</p>
+                        <p class="text-xs">ትምህርቱን የሚያስተምሩት በኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተክርስቲያን ታዋቂ የአብነት ትምህርት ቤቶች ያለፉ፣ በዕውቀታቸው የተመሰከረላቸው፣ እንዲሁም በኦንላይን የማስተማር የካበተ ልምድ ያላቸው አበው ሊቃውንትና መምህራን ናቸው።</p>
+                    </div>
 
-            <label class="text-sm">
-              Email
-              <input class="field" id="email" type="email" placeholder="name@example.com">
-            </label>
+                    <div class="space-y-1">
+                        <p class="font-bold text-amber-300 text-xs uppercase tracking-wide">4. የትምህርት አሰጣጥ፦</p>
+                        <ul class="list-disc pl-4 space-y-1 text-slate-300 text-xs">
+                            <li><strong class="text-white">የቀጥታ ትምህርት (Live Classes)፦</strong> ትምህርቱ በ Google Meet እና Telegram በኩል በቀጥታ የቀጥታ መስተጋብር (Live Session) የሚሰጥ ይሆናል።</li>
+                            <li><strong class="text-white">የድምፅና የቪዲዮ ምዘና፦</strong> ተማሪዎች የሠሩትን የንባብና የዜማ ልምምድ በድምፅ (Voice Note) በመላክ ከመምህራን ጋር በቅርብ ይስተካከላሉ።</li>
+                        </ul>
+                    </div>
+                </div>
 
-            <label class="eth text-sm">
-              ስልክ ቁጥር *
-              <input class="field" id="phone" type="tel" required placeholder="+251...">
-            </label>
+                <div class="flex justify-end pt-2">
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-7 py-3 rounded-xl text-xs sm:text-sm">ምዝገባ ይጀምሩ 👉</button>
+                </div>
+            </div>
 
-            <label class="eth text-sm">
-              አገር *
-              <select class="field" id="country" required>
-                <option value="ET">ኢትዮጵያ</option>
-                <option value="US">United States</option>
-                <option value="CA">Canada</option>
-                <option value="GB">United Kingdom</option>
-                <option value="SA">Saudi Arabia</option>
-                <option value="AE">United Arab Emirates</option>
-                <option value="DE">Germany</option>
-                <option value="SE">Sweden</option>
-                <option value="NO">Norway</option>
-                <option value="OTHER">ሌላ አገር</option>
-              </select>
-            </label>
+            <!-- Step 2 -->
+            <div id="step-2" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">1. ስም (First Name)</h2>
+                <input type="text" id="firstName" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500" placeholder="ስምዎን ያስገቡ...">
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm">ቀጥል</button>
+                </div>
+            </div>
+[10/30/2026 6:30 PM] ᙘᴇꋊɪ ፲፮ ♱: <!-- Step 3 -->
+            <div id="step-3" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">2. የአባት ስም (Last Name)</h2>
+                <input type="text" id="lastName" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500" placeholder="የአባት ስምዎን ያስገቡ...">
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm">ቀጥል</button>
+                </div>
+            </div>
 
-            <label class="eth text-sm">
-              ከተማ
-              <input class="field" id="city" placeholder="ከተማ">
-            </label>
+            <!-- Step 4 -->
+            <div id="step-4" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">3. ስልክ ቁጥር</h2>
+                <input type="tel" id="phone" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500" placeholder="+251...">
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm">ቀጥል</button>
+                </div>
+            </div>
 
-            <label class="eth text-sm">
-              የክህነት ደረጃ
-              <select class="field" id="clergyRank">
-                <option value="">ይምረጡ</option>
-                <option>ምዕመን</option>
-                <option>ዲያቆን</option>
-                <option>ካህን</option>
-                <option>ሌላ</option>
-              </select>
-            </label>
+            <!-- Step 5 -->
+            <div id="step-5" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">4. ጾታ</h2>
+                <select id="gender" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500">
+                    <option value="">ጾታ ይምረጡ</option>
+                    <option value="ወንድ">ወንድ</option>
+                    <option value="ሴት">ሴት</option>
+                </select>
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm">ቀጥል</button>
+                </div>
+            </div>
 
-            <label class="text-sm">
-              Telegram username
-              <input class="field" id="telegram" placeholder="@username">
-            </label>
-          </div>
-        </section>
+            <!-- Step 6 -->
+            <div id="step-6" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">5. የሚኖሩበት ከተማ</h2>
+                <input type="text" id="city" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500" placeholder="ከተማ...">
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm">ቀጥል</button>
+                </div>
+            </div>
 
-        <!-- STEP 2: Learning information -->
-        <section class="step hidden" data-step="2">
-          <h2 class="eth section-title mb-5 text-xl font-bold">2. የትምህርት ምርጫ</h2>
+            <!-- Step 7 -->
+            <div id="step-7" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">6. ሀገር</h2>
+[10/30/2026 6:30 PM] ᙘᴇꋊɪ ፲፮ ♱: <select id="country" required onchange="calculateFee()" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500">
+                    <option value="Ethiopia">Ethiopia (ኢትዮጵያ)</option>
+                    <option value="International">International (USA, UAE, CANADA, UK...)</option>
+                </select>
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm">ቀጥል</button>
+                </div>
+            </div>
 
-          <label class="eth block text-sm">
-            የመማር መንገድ *
-            <select class="field" id="learningPath" required>
-              <option value="church_service">የቤተ ክርስቲያን አገልግሎት ብቻ</option>
-              <option value="abnet">አጠቃላይ የአብነት ትምህርት</option>
-            </select>
-          </label>
+            <!-- Step 8 -->
+            <div id="step-8" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">7. የልደት ቀን</h2>
+                <input type="date" id="birthDate" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500">
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm">ቀጥል</button>
+                </div>
+            </div>
 
-          <label class="eth mt-5 block text-sm">
-            የሚማሩት ኮርስ *
-            <select class="field" id="course" required>
-              <option value="">ኮርስ ይምረጡ</option>
-            </select>
-          </label>
+            <!-- Step 9 -->
+            <div id="step-9" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">8. የተሰማሩበት ሙያ</h2>
+                <input type="text" id="profession" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500" placeholder="ሙያዎ...">
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm">ቀጥል</button>
+                </div>
+            </div>
 
-          <label class="eth mt-5 block text-sm">
-            የመማር ዘዴ *
-            <select class="field" id="package" required>
-              <option value="group">Group — በቡድን</option>
-              <option value="vip">VIP — በግል</option>
-            </select>
-          </label>
+            <!-- Step 10 -->
+            <div id="step-10" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">9. ያሉበት የክህነት ደረጃ</h2>
+                <select id="clergyRank" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500">
+                    <option value="">ደረጃ ይምረጡ</option>
+                    <option value="ምዕመን">ምዕመን</option>
+                    <option value="ዲያቆን">ዲያቆን</option>
+                    <option value="ካህን">ካህን</option>
+                </select>
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm">ቀጥል</button>
+                </div>
+            </div>
 
-          <label class="eth mt-5 block text-sm">
-            በሳምንት የሚማሩበት ቀን
-            <select class="field" id="days">
-              <option value="2">2 ቀን</option>
-              <option value="3" selected>3 ቀን</option>
-              <option value="5">5 ቀን</option>
-            </select>
-          </label>
+            <!-- Step 11 -->
+            <div id="step-11" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">10. የቴሌግራም መለያ (Username)</h2>
+[10/30/2026 6:30 PM] ᙘᴇꋊɪ ፲፮ ♱: <input type="text" id="telegramUser" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500" placeholder="@username">
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm">ቀጥል</button>
+                </div>
+            </div>
 
-          <label class="eth mt-5 block text-sm">
-            የመማር ዓላማዎ
-            <textarea class="field" id="goal" rows="3" placeholder="ምን መማር እንደሚፈልጉ ይግለጹ"></textarea>
-          </label>
-        </section>
+            <!-- Step 12 -->
+            <div id="step-12" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">11. ከአሁን በፊት የአብነት ትምህርት የቀሰሙ መሆን አለመሆን</h2>
+                <select id="priorExperience" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500">
+                    <option value="">ምረጡ</option>
+                    <option value="አዎ">አዎ</option>
+                    <option value="አልቀሰምኩም">አልቀሰምኩም</option>
+                </select>
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm">ቀጥል</button>
+                </div>
+            </div>
 
-        <!-- STEP 3: Price and payment -->
-        <section class="step hidden" data-step="3">
-          <h2 class="eth section-title mb-5 text-xl font-bold">3. የክፍያ መረጃ</h2>
+            <!-- Step 13 -->
+            <div id="step-13" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">12. የመማር ዓላማ</h2>
+                <textarea id="learningGoal" rows="3" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500" placeholder="ዓላማዎን ይጻፉ..."></textarea>
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm">ቀጥል</button>
+                </div>
+            </div>
 
-          <div class="rounded-2xl border border-violet-400/20 bg-violet-950/20 p-5">
-            <p class="eth text-sm text-slate-300">የመረጡት ኮርስ</p>
-            <p id="selectedCourse" class="eth mt-1 font-bold text-violet-200">—</p>
+            <!-- Step 14 -->
+            <div id="step-14" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">13. መማር የሚፈልጉትን ትምህርት ይምረጡ</h2>
+                <select id="department" required onchange="calculateFee()" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500">
+                    <option value="">ትምህርት ይምረጡ</option>
+                    <option value="ቃል">ቃል (ውዳሴ ማርያም; መልክዓ ማርያም..)</option>
+                    <option value="ቁጥር">ቁጥር</option>
+                    <option value="ንባብ">ንባብ (ወንጌል ዮሐንስ; መዝሙረ ዳዊት..)</option>
+                    <option value="ዜማ">ዜማ (ውዳሴ ማርያም ዜማ; መስተጋብዕ..)</option>
+                    <option value="ቅዳሴ">ቅዳሴ (ተሰጥኦ; ግብረ ዲቁና..)</option>
+                </select>
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm">ቀጥል</button>
+                </div>
+            </div>
+[10/30/2026 6:30 PM] ᙘᴇꋊɪ ፲፮ ♱: <!-- Step 15 -->
+            <div id="step-15" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">14. መማር የሚፈልጉበት መንገድ</h2>
+                <select id="learningWay" required onchange="calculateFee()" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500">
+                    <option value="">የመማሪያ መንገድ ይምረጡ</option>
+                    <option value="Individual">Individual (በግል)</option>
+                    <option value="Group">Group (በቡድን)</option>
+                </select>
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm">ቀጥል</button>
+                </div>
+            </div>
 
-            <p class="eth mt-4 text-sm text-slate-300">ወርሃዊ ክፍያ</p>
-            <p id="price" class="mt-1 text-3xl font-bold">—</p>
+            <!-- Step 16 -->
+            <div id="step-16" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">15. በሳምንት ስንት ቀን ለመማር ይፈልጋሉ?</h2>
+                <select id="daysPerWeek" required onchange="calculateFee()" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500">
+                    <option value="">የቀናት ብዛት ይምረጡ</option>
+                    <option value="2">በሳምንት 2 ቀን</option>
+                    <option value="3">በሳምንት 3 ቀን</option>
+                </select>
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+                    <button type="button" onclick="changeStep(1)" class="glow-button bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm">ቀጥል</button>
+                </div>
+            </div>
 
-            <p class="eth mt-3 text-xs leading-6 text-slate-400">
-              ይህ የሚታየው የዋጋ ግምት ነው። የመጨረሻው ዋጋ በአገልጋይ ላይ መረጋገጥ አለበት።
+            <!-- Step 17 -->
+            <div id="step-17" class="space-y-4 hidden">
+                <h2 class="eth-font text-sm font-semibold text-indigo-300 border-b border-slate-800 pb-2">16. የክፍያ መረጃ እና የባንክ ደረሰኝ ማስገቢያ</h2>
+                
+                <div class="p-4 bg-slate-900/95 border border-amber-500/30 rounded-2xl text-xs sm:text-sm space-y-3 text-slate-200 leading-relaxed shadow-inner">
+                    <p id="summaryText" class="eth-font text-amber-200 font-medium leading-relaxed">
+                        <!-- Dynamic Summary -->
+                    </p>
+                    <hr class="border-slate-800">
+                    <p class="font-bold text-indigo-300">የባንክ ሂሳብ ቁጥር:</p>
+                    <p class="text-white font-mono text-sm">ንግድ ባንክ (CBE): <span class="font-bold text-amber-300">100000000000</span></p>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">የባንክ የክፍያ ደረሰኝ ፎቶ (Receipt Screenshot) ማስገቢያ</label>
+                    <input type="file" id="receiptPhoto" accept="image/*" required class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-3 py-2 text-slate-300 text-xs file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-indigo-600 file:text-white hover:file:bg-indigo-500 cursor-pointer">
+                </div>
+
+                <div id="messageBox" class="hidden p-3 rounded-xl text-xs text-center font-medium"></div>
+
+                <div class="flex justify-between pt-4">
+                    <button type="button" onclick="changeStep(-1)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-5 py-2.5 rounded-xl text-sm">ተመለስ</button>
+[10/30/2026 6:30 PM] ᙘᴇꋊɪ ፲፮ ♱: <button type="submit" id="submitBtn" class="glow-button bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-2.5 rounded-xl text-sm shadow-lg">ምዝገባውን አጠናቅ</button>
+                </div>
+            </div>
+
+        </form>
+
+        <!-- Success Result View -->
+        <div id="successView" class="hidden text-center py-8 space-y-4">
+            <div class="inline-flex p-4 bg-emerald-500/20 border border-emerald-500/40 rounded-full text-emerald-400 shadow-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <h2 class="eth-font text-lg font-bold text-emerald-300">እንኳን ደስ አሎት!</h2>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed px-2">
+                መረጃዎ ወደ ዕዝራ ሱቱኤል የአብነት ትምህርት ቤት ገብቷል። ተረጋግጦ ሲጠናቀቅ ባስገቡት የቴሌግራም ዩዘር ኔም መልዕክት ይልክሎታል፡
             </p>
-          </div>
-
-          <div class="mt-5">
-            <p class="eth mb-3 text-sm font-semibold">የክፍያ ዘዴ</p>
-
-            <label class="mb-3 flex gap-3 rounded-xl border border-slate-700 p-4">
-              <input type="radio" name="paymentMethod" value="bank_transfer" checked>
-              <span>
-                <strong class="eth">የባንክ ዝውውር</strong>
-                <span class="eth mt-1 block text-xs text-slate-400">ለኢትዮጵያ ተማሪዎች።</span>
-              </span>
-            </label>
-
-            <label class="flex gap-3 rounded-xl border border-slate-700 p-4">
-              <input type="radio" name="paymentMethod" value="online_payment">
-              <span>
-                <strong class="eth">ኦንላይን ክፍያ</strong>
-                <span class="eth mt-1 block text-xs text-slate-400">የክፍያ አገልግሎት ከተዋቀረ በኋላ ይሠራል።</span>
-              </span>
-            </label>
-          </div>
-
-          <label class="eth mt-5 block text-sm">
-            የባንክ ክፍያ ደረሰኝ
-            <input class="field" id="receipt" type="file" accept="image/*,application/pdf">
-          </label>
-
-          <p class="eth mt-2 text-xs leading-6 text-slate-400">
-            ደረሰኝ ማስገባት ብቻውን ክፍያው ተረጋግጧል ማለት አይደለም።
-          </p>
-        </section>
-
-        <!-- STEP 4: Confirmation -->
-        <section class="step hidden" data-step="4">
-          <h2 class="eth section-title mb-5 text-xl font-bold">4. ማረጋገጫ</h2>
-
-          <div id="review" class="space-y-3 rounded-2xl border border-slate-700 bg-slate-900 p-4 text-sm"></div>
-
-          <label class="eth mt-5 flex items-start gap-3 text-sm leading-7">
-            <input id="agree" type="checkbox" required class="mt-2">
-            ያስገባሁት መረጃ ትክክለኛ መሆኑን አረጋግጣለሁ።
-          </label>
-        </section>
-
-        <div id="message" class="mt-5 hidden rounded-xl border border-slate-700 p-4 text-sm" role="status"></div>
-
-        <div id="navigation" class="mt-8 flex justify-between gap-3 border-t border-slate-800 pt-5">
-          <button type="button" id="back" class="rounded-xl bg-slate-800 px-5 py-3">
-            ተመለስ
-          </button>
-
-          <button type="button" id="next" class="primary">
-            ቀጥል
-          </button>
-
-          <button type="submit" id="submit" class="primary hidden">
-            ምዝገባውን አስገባ
-          </button>
+            <div class="pt-2">
+                <a href="https://t.me/Mahderetibeb12" target="_blank" class="inline-block bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl shadow-lg transition">
+                    👉🏻 @Mahderetibeb12
+                </a>
+            </div>
         </div>
 
-      </form>
+    </div>
 
-      <div class="eth mt-7 border-t border-slate-800 pt-5 text-center text-xs leading-7 text-slate-500">
-        «እውቀትን መጠየቅ፣ ትውፊትን መጠበቅ!»
-        <br>
-        ዕዝራ ሱቱኤል የአብነት ትምህርት ቤት
-      </div>
-    </section>
-  </main>
+    <script>
+        const SUPABASE_URL = 'https://mnsqffaojwnxvuyqmzwu.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1uc3FmZmFvandueHZ1eXFtend1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAxODA1MDIsImV4cCI6MjEwNTc1NjUwMn0.yGrlSeoT6xm5D4OxJ4nbP2oIGB-Y2NvkXC6H1272oDo';
+        const supabaseClient = supabase.createClient(SUPABASE_URL.trim(), SUPABASE_KEY.trim());
 
-<script>
-(() => {
-  /*
-   * Supabase Project Settings > API ውስጥ ያሉትን
-   * Project URL እና publishable/anon key አረጋግጥ።
-   * service_role key በዚህ HTML ውስጥ በፍጹም አታስገባ።
-   */
-  const SUPABASE_URL = "https://mnsqffaojwnxvuyqmzwu.supabase.co";
-  const SUPABASE_ANON_KEY = "PASTE_YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY_HERE";
+        let currentStep = 1;
+        const totalSteps = 17;
 
-  const db = window.supabase?.createClient
-    ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-    : null;
+        function calculateFee() {
+            const country = document.getElementById('country').value;
+            const dept = document.getElementById('department').value;
+            const mode = document.getElementById('learningWay').value;
+            const days = document.getElementById('daysPerWeek').value;
+            const summaryBox = document.getElementById('summaryText');
 
-  const $ = id => document.getElementById(id);
-  let step = 1;
-  const totalSteps = 4;
+            if (!dept  !mode  !days) {
+                summaryBox.innerHTML = "እባክዎን የቀደሙትን ደረጃዎች በትክክል ይሙሉ፤";
+                return;
+            }
 
-  const courses = {
-    church_service: [
-      "የቤተ ክርስቲያን አገልግሎት",
-      "ዜማ",
-      "ቅዳሴ",
-      "ጾመ ድጓ"
-    ],
-    abnet: [
-      "ንባብ",
-      "ቃል",
-      "ግዕዝ",
-      "ቅኔ",
-      "ትርጓሜ",
-      "ዜማ",
-      "ቅዳሴ",
-      "ጾመ ድጓ"
-    ]
-  };
+            let price = "";
+            const isLocal = country === 'Ethiopia';
+            const isGroup = mode === 'Group';
+            const isZemaOrKidase = (dept === 'ዜማ' || dept === 'ቅዳሴ');
 
-  /*
-   * የሚታዩት ዋጋዎች የምሳሌ ዋጋዎች ናቸው።
-   * ከራስህ የመጨረሻ የዋጋ ዝርዝር ጋር አስማማቸው።
-   * እውነተኛ ክፍያ ከመቀበል በፊት Edge Function ዋጋውን
-   * በአገልጋይ ላይ በተለየ ሁኔታ ማረጋገጥ አለበት።
-   */
-  const prices = {
-    "የቤተ ክርስቲያን አገልግሎት": { group: 700, vip: 1300 },
-    "ዜማ": { group: 800, vip: 1500 },
-    "ቅዳሴ": { group: 900, vip: 1700 },
-    "ጾመ ድጓ": { group: 1000, vip: 1800 },
-    "ንባብ": { group: 800, vip: 1500 },
-    "ቃል": { group: 750, vip: 1400 },
-    "ግዕዝ": { group: 800, vip: 1500 },
-    "ቅኔ": { group: 1000, vip: 1800 },
-    "ትርጓሜ": { group: 900, vip: 1700 }
-  };
+            if (isLocal) {
+                if (!isGroup) {
+                    price = days === '2' ? '3800 ብር' : '5500 ብር';
+                } else {
+                    price = isZemaOrKidase ? (days === '2' ? '1400 ብር' : '2200 ብር') : (days === '2' ? '1100 ብር' : '1800 ብር');
+                }
+            } else {
+                if (!isGroup) {
+                    price = days === '2' ? '$70' : '$110';
+                } else {
+                    price = isZemaOrKidase ? (days === '2' ? '$28' : '$45') : (days === '2' ? '$20' : '$30');
+                }
+            }
 
-  function fillCourses() {
-    const select = $("course");
-    const previous = select.value;
-    select.replaceChildren(new Option("ኮርስ ይምረጡ", ""));
-
-    courses[$("learningPath").value].forEach(name => {
-      select.add(new Option(name, name));
-    });
-
-    if ([...select.options].some(option => option.value === previous)) {
-      select.value = previous;
-    }
-
-    updatePrice();
-  }
-
-  function updatePrice() {
-    const course = $("course").value;
-    const packageType = $("package").value;
-    const country = $("country").value;
-    const currency = country === "ET" ? "ETB" : "USD";
-    const amount = prices[course]?.[packageType];
-
-    $("selectedCourse").textContent = course || "ኮርስ አልተመረጠም";
-
-    $("price").textContent = amount
-      ? new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency,
-          maximumFractionDigits: 0
-        }).format(currency === "ETB" ? amount : amount / 20)
-      : "—";
-
-    /*
-     * USD ዋጋዎችን ከታች በተለየ ሁኔታ አስተካክል፤
-     * በምሳሌው ውስጥ prices የETB ዋጋዎች ብቻ ናቸው።
-     * የውጭ አገር ዋጋ ከተወሰነ የUSD ዋጋ ዝርዝር ማዋቀር ያስፈልጋል።
-     */
-    document.querySelector('input[value="bank_transfer"]').disabled = country !== "ET";
-
-    if (country !== "ET") {
-      document.querySelector('input[value="online_payment"]').checked = true;
-    } else {
-      document.querySelector('input[value="bank_transfer"]').checked = true;
-    }
-  }
-
-  function showStep(number) {
-    step = number;
-
-    document.querySelectorAll(".step").forEach(section => {
-      section.classList.toggle("hidden", Number(section.dataset.step) !== step);
-    });
-
-    $("stepLabel").textContent = `ደረጃ ${step} ከ ${totalSteps}`;
-    $("percent").textContent = `${Math.round(step / totalSteps * 100)}%`;
-    $("progress").style.width = `${step / totalSteps * 100}%`;
-
-    $("back").classList.toggle("hidden", step === 1);
-    $("next").classList.toggle("hidden", step === totalSteps);
-    $("submit").classList.toggle("hidden", step !== totalSteps);
-
-    if (step === 4) renderReview();
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  function validateCurrentStep() {
-    const section = document.querySelector(`.step[data-step="${step}"]`);
-
-    for (const field of section.querySelectorAll("input, select, textarea")) {
-      if (field.required && !field.checkValidity()) {
-        field.reportValidity();
-        field.focus();
-        return false;
-      }
-    }
-
-    if (step === 2 && !$("course").value) {
-      $("course").reportValidity();
-      return false;
-    }
-
-    if (step === 4 && !$("agree").checked) {
-      $("agree").reportValidity();
-      return false;
-    }
-
-    return true;
-  }
-
-  function renderReview() {
-    const data = getFormData();
-    const amount = prices[data.course]?.[data.package_type] || 0;
-    const currency = data.country_code === "ET" ? "ETB" : "USD";
-
-    const rows = [
-      ["ሙሉ ስም", `${data.first_name} ${data.last_name}`],
-      ["ስልክ", data.phone],
-      ["ኢሜል", data.email || "አልተሰጠም"],
-      ["አገር", data.country_code],
-      ["የመማር መንገድ", data.learning_path === "abnet"
-        ? "አጠቃላይ የአብነት ትምህርት"
-        : "የቤተ ክርስቲያን አገልግሎት ብቻ"],
-      ["ኮርስ", data.course],
-      ["የመማር ዘዴ", data.package_type],
-      ["በሳምንት ቀን", data.days_per_week],
-      ["ወርሃዊ የምሳሌ ዋጋ", amount ? `${amount} ${currency}` : "ዋጋ አልተወሰነም"]
-    ];
-
-    $("review").replaceChildren();
-
-    rows.forEach(([label, value]) => {
-      const row = document.createElement("div");
-      row.className = "flex justify-between gap-4 border-b border-slate-800 py-2";
-
-      const left = document.createElement("span");
-      left.className = "text-slate-400";
-      left.textContent = label;
-
-      const right = document.createElement("strong");
-      right.className = "max-w-[60%] break-words text-right";
-      right.textContent = value || "—";
-
-      row.append(left, right);
-      $("review").appendChild(row);
-    });
-  }
-
-  function getFormData() {
-    return {
-      first_name: $("firstName").value.trim(),
-      last_name: $("lastName").value.trim(),
-      email: $("email").value.trim() || null,
-      phone: $("phone").value.trim(),
-      country_code: $("country").value,
-      city: $("city").value.trim() || null,
-      clergy_rank: $("clergyRank").value || null,
-      telegram_user: $("telegram").value.trim() || null,
-      learning_path: $("learningPath").value,
-      course: $("course").value,
-      package_type: $("package").value,
-      days_per_week: Number($("days").value),
-      learning_goal: $("goal").value.trim() || null
-    };
-  }
-
-  function showMessage(message, success = false) {
-    $("message").classList.remove("hidden");
-    $("message").className = "mt-5 rounded-xl border p-4 text-sm " +
-      (success
-        ? "border-emerald-700 bg-emerald-950 text-emerald-200"
-        : "border-red-800 bg-red-950 text-red-200");
-    $("message").textContent = message;
-  }
-
-  $("learningPath").addEventListener("change", fillCourses);
-  $("course").addEventListener("change", updatePrice);
-  $("package").addEventListener("change", updatePrice);
-  $("country").addEventListener("change", updatePrice);
-
-  $("next").addEventListener("click", () => {
-    if (validateCurrentStep()) showStep(Math.min(totalSteps, step + 1));
-  });
-
-  $("back").addEventListener("click", () => {
-    showStep(Math.max(1, step - 1));
-  });
-
-  $("registrationForm").addEventListener("submit", async event => {
-    event.preventDefault();
-
-    if (!validateCurrentStep()) return;
-
-    if (!db || SUPABASE_ANON_KEY.includes("PASTE_YOUR")) {
-      showMessage("እባክዎ Supabase API key በኮዱ ውስጥ ያስገቡ።");
-      return;
-    }
-
-    const button = $("submit");
-    button.disabled = true;
-    button.textContent = "በመላክ ላይ...";
-
-    try {
-      const student = getFormData();
-      const paymentMethod = document.querySelector(
-        'input[name="paymentMethod"]:checked'
-      ).value;
-
-      /*
-       * ይህ Edge Function በSupabase ውስጥ መኖር አለበት።
-       * የዋጋ ማረጋገጫ፣ የዳታቤዝ ማስቀመጥ እና
-       * የክፍያ ማስጀመር በEdge Function ውስጥ ይከናወናሉ።
-       */
-      const { data, error } = await db.functions.invoke(
-        "submit-registration",
-        {
-          body: {
-            student,
-            package_code: student.package_type,
-            payment_method: paymentMethod
-          }
-        }
-      );
-
-      if (error) throw error;
-      if (!data?.ok) {
-        throw new Error(data?.error || "ምዝገባው አልተሳካም።");
-      }
-
-      if (paymentMethod === "online_payment") {
-        if (!data.checkout_url) {
-          throw new Error("የክፍያ ሊንክ አልተገኘም።");
+            const modeLabel = isGroup ? 'በቡድን' : 'በግል';
+            
+            summaryBox.innerHTML = 
+                ከ <strong>${dept}</strong> ትምህርት ውስጥ የመረጡት <strong>${modeLabel}</strong> ሲሆን የመረጥኩትም በሳምንት ለ <strong>${days}</strong> ቀናት ለመማር ነው።<br><br>
+                • (የትምህርቱ) ዋጋ በወር <strong>${price}</strong> ነው።<br>
+                • ክፍያውን ከስር በተቀመጡት የክፍያ አማራጮች በመክፈል ቀጣይ ገጽ ላይ screenshot እያያዙ ምዝገባዎን ይፈፅሙ።
+            ;
         }
 
-        window.location.href = data.checkout_url;
-        return;
-      }
+        function changeStep(direction) {
+            if (direction > 0) {
+                const field = document.querySelector(
+                    #step-${currentStep} input, #step-${currentStep} select, #step-${currentStep} textarea
+[10/30/2026 6:30 PM] ᙘᴇꋊɪ ፲፮ ♱: );
+                if (field && !field.value.trim()) {
+                    field.reportValidity();
+                    return;
+                }
+            }
+            const next = currentStep + direction;
+            if (next >= 1 && next <= totalSteps) {
+                document.getElementById(step-${currentStep}).classList.add('hidden');
+                currentStep = next;
+                document.getElementById(step-${currentStep}).classList.remove('hidden');
+                document.getElementById('current-step-num').textContent = currentStep;
+                
+                if (currentStep === 17) {
+                    calculateFee();
+                }
+            }
+        }
 
-      showMessage(
-        "ምዝገባዎ ተልኳል። የክፍያ ማረጋገጫ ከትምህርት ቤቱ እስኪደርስዎ ይጠብቁ።",
-        true
-      );
+        const form = document.getElementById('registrationForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            const messageBox = document.getElementById('messageBox');
 
-      button.textContent = "ምዝገባው ተልኳል";
+            function showMsg(ok, text) {
+                messageBox.classList.remove('hidden');
+                messageBox.className = 'p-3 rounded-xl text-xs text-center font-medium border ' +
+                    (ok ? 'bg-emerald-950 text-emerald-200 border-emerald-800'
+                        : 'bg-red-950 text-red-200 border-red-800');
+                messageBox.textContent = text;
+            }
 
-    } catch (error) {
-      console.error(error);
-      showMessage(
-        error.message || "ምዝገባው አልተሳካም። Supabase Edge Function እና የዳታቤዝ ማዋቀር ያረጋግጡ።"
-      );
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'በመላክ ላይ...';
 
-      button.disabled = false;
-      button.textContent = "ምዝገባውን አስገባ";
-    }
-  });
+            try {
+                let receiptUrl = '';
+                const receiptFile = document.getElementById('receiptPhoto').files[0];
 
-  fillCourses();
-  showStep(1);
-})();
-</script>
+                if (receiptFile) {
+                    const ext = (receiptFile.name.split('.').pop() || 'jpg').toLowerCase();
+                    const fileName = ${Date.now()}_${Math.random().toString(36).slice(2, 8)}.${ext};
 
+                    const { error: uploadError } = await supabaseClient.storage
+                        .from('receipts')
+                        .upload(fileName, receiptFile, { contentType: receiptFile.type });
+
+                    if (uploadError) throw new Error('ደረሰኝ አልተጫነም: ' + uploadError.message);
+
+                    const { data: urlData } = supabaseClient.storage
+                        .from('receipts')
+                        .getPublicUrl(fileName);
+                    receiptUrl = urlData.publicUrl;
+                }
+
+                const g = (id) => document.getElementById(id).value;
+                const formData = {
+                    first_name: g('firstName'),
+                    last_name: g('lastName'),
+                    phone: g('phone'),
+                    gender: g('gender'),
+                    city: g('city'),
+                    country: g('country'),
+                    birth_date: g('birthDate'),
+                    profession: g('profession'),
+                    clergy_rank: g('clergyRank'),
+                    priesthood_level: g('clergyRank'),
+                    telegram_user: g('telegramUser'),
+                    prior_experience: g('priorExperience'),
+                    learning_goal: g('learningGoal'),
+                    learning_way: g('learningWay'),
+                    department: g('department'),
+                    days_per_week: g('daysPerWeek'),
+                    receipt_url: receiptUrl
+                };
+
+                const { error } = await supabaseClient.from('registrations').insert([formData]);
+                if (error) throw new Error(error.message);
+
+                form.classList.add('hidden');
+                document.getElementById('step-counter-box').classList.add('hidden');
+                document.getElementById('successView').classList.remove('hidden');
+
+            } catch (err) {
+                showMsg(false, 'ምዝገባው አልተሳካም: ' + err.message);
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'ምዝገባውን አጠናቅ';
+            }
+        });
+    </script>
 </body>
-    </html>
+</html>
